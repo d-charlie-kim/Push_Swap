@@ -5,6 +5,7 @@
 int main(int argc, char **argv)
 {
     int     *intag;
+    int     count;
     int     i;
     int     j;
     int     temp;

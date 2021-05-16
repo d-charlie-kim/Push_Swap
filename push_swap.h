@@ -17,9 +17,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char    **ft_split(char const *s, char c);
-char    **ft_action(int **str, char const *s, char c, int a);
-void    ft_free(int **str, int a);
-int     ft_count(char const*s, char c);
+int     ft_split(char **argv, int *stack);
+int     ft_count(char **argv);
+int     ft_putstr(char *str);
+int     ft_duplicate(int *stack, int count);
 
 #endif
