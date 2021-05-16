@@ -64,7 +64,7 @@ int     ft_count(char **argv)
                     j++;
                 if (argv[i][j] == '-' && argv[i][j])
                     j++;
-                if (argv[i][j] < 48 && argv[i][j] > 57 && argv[i][j])
+                if ((argv[i][j] < 48 || argv[i][j] > 57) && argv[i][j])
                     return (-1);
                 count++;
                 while (argv[i][j] >= 48 && argv[i][j] <=57 && argv[i][j])
