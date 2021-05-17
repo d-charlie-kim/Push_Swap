@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	t_stack *stack_a;
 	t_stack *stack_b;
 	int count;
-
 	if (argc < 2)
 		return (ft_putstr("Error"));
 	count = ft_arg_check(argv);
@@ -40,16 +39,34 @@ int	main(int argc, char **argv)
 		ft_lstclear(stack_a);
 		return (ft_putstr("Error"));
 	}
+
+
 	push_b(&stack_a, &stack_b);
 	push_b(&stack_a, &stack_b);
-	printf ("stack a  //  stack b\n");
+	rotate_both(&stack_a, &stack_b);
+	reverse_rotate_both(&stack_a, &stack_b);
+	swap_both(&stack_a, &stack_b);
+
+	printf ("\nstack A  //  stack B\n");
 	while (stack_a != NULL || stack_b != NULL)
 	{
-		printf("||  %lld    //  %lld  ||\n", stack_a->number, stack_b->number);
+		printf("||  ");
 		if (stack_a != NULL)
+		{
+			printf("%lld", stack_a->number);
 			stack_a = stack_a->next;
+		}
+		else
+			printf(" ");
+		printf("          ");
 		if (stack_b != NULL)
+		{
+			printf("%lld", stack_b->number);
 			stack_b = stack_b->next;
+		}
+		else
+			printf(" ");
+		printf("\n");
 	}
 
 

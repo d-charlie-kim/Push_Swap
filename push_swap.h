@@ -32,19 +32,22 @@ int		ft_duplicate(t_stack *stack, int count);
 void	ft_lstclear(t_stack *stack);
 t_stack	ft_lstadd_back(t_stack *stack);
 
-void	swap_a(t_stack *stack_a);
-void	swap_b(t_stack *stack_b);
-void	swap_both(t_stack *stack_a, t_stack *stack_b);
+void	ft_swap(t_stack **stack);
+void	swap_a(t_stack **stack_a);
+void	swap_b(t_stack **stack_b);
+void	swap_both(t_stack **stack_a, t_stack **stack_b);
 
+void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
-void	push_a(t_stack *stack_a, t_stack *stack_b);
 
-void	reverse_rotate_a(t_stack *stack_a);
-void	reverse_rotate_b(t_stack *stack_b);
-void	reverse_rotate_both(t_stack *stack_a, t_stack *stack_b);
+void	reverse_rotate(t_stack **stack);
+void	reverse_rotate_a(t_stack **stack_a);
+void	reverse_rotate_b(t_stack **stack_b);
+void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
 
-void	rotate_a(t_stack *stack_a);
-void	rotate_b(t_stack *stack_b);
-void	rotate_both(t_stack *stack_a, t_stack *stack_b);
+void	ft_rotate(t_stack **stack);
+void	rotate_a(t_stack **stack_a);
+void	rotate_b(t_stack **stack_b);
+void	rotate_both(t_stack **stack_a, t_stack **stack_b);
 
 #endif

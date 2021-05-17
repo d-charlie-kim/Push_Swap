@@ -12,52 +12,39 @@
 
 #include "push_swap.h"
 
-void	swap_a(t_stack *stack_a)
+void	ft_swap(t_stack **stack)
 {
-	t_stack	*temp;
+	t_stack	*second;
+	t_stack	*first;
 
-	if (stack_a != NULL)
+	if ((*stack) != NULL)
 	{
-		temp = stack_a->next;
-		stack_a->next = temp->next;
-		temp->next = stack_a;
-		stack_a = temp;
+		first = *stack;
+		second = first->next;
+		first->next = second->next;
+		second->next = first;
+		*stack = second;
+	}
+}
+
+void	swap_a(t_stack **stack_a)
+{
+		ft_swap(stack_a);
 		ft_putstr("sa");
-	}
 }
 
-void	swap_b(t_stack *stack_b)
+void	swap_b(t_stack **stack_b)
 {
-	t_stack	*temp;
-
-	if (stack_b != NULL)
-	{
-		temp = stack_b->next;
-		stack_b->next = temp->next;
-		temp->next = stack_b;
-		stack_b = temp;
+		ft_swap(stack_b);
 		ft_putstr("sb");
-	}
 }
 
-void	swap_both(t_stack *stack_a, t_stack *stack_b)
+void	swap_both(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*temp;
-
-	if (stack_a != NULL)
-	{
-		temp = stack_a->next;
-		stack_a->next = temp->next;
-		temp->next = stack_a;
-		stack_a = temp;
-	}
-	if (stack_b != NULL)
-	{
-		temp = stack_b->next;
-		stack_b->next = temp->next;
-		temp->next = stack_b;
-		stack_b = temp;
-	}
-	if (stack_a != NULL || stack_b != NULL)
+	if (*stack_a != NULL)
+		ft_swap(stack_a);
+	if (*stack_b != NULL)
+		ft_swap(stack_b);
+	if (*stack_a != NULL || *stack_b != NULL)
 		ft_putstr("ss");
 }
