@@ -17,6 +17,7 @@ int     ft_split(char **argv, t_stack *stack)
     t_stack *temp;
     int     i;
     int     j;
+    int     k;
     int     minus;
 
     i = 1;
@@ -34,13 +35,25 @@ int     ft_split(char **argv, t_stack *stack)
                     j++;
                     minus = -1;
                 }
+                k = 0;
                 while (argv[i][j] >= 48 && argv[i][j] <=57 && argv[i][j])
                 {
                     temp->number = (temp->number * 10) + argv[i][j] - '0';
+                    k++;
                     j++;
+                }
+                if (k >= 11 || temp->number > 2147483648 || (temp->number == 2147483648 && minus == 1))
+                {
+                    //ft_lstclear(stack);
+                    return (-1);
                 }
                 temp->number = temp->number * minus;
                 temp->next = (t_stack *)malloc(sizeof(t_stack));
+                if (!(temp->next))
+                {
+                    //ft_lstclear(stack);
+                    return (-1);
+                }
                 temp = temp->next;
                 temp->number = 0;
                 temp->next = NULL;
@@ -131,13 +144,19 @@ int     main(int argc, char **argv)
     if (ft_split(argv, stack))
         return (ft_putstr("Error"));
     if (ft_duplicate(stack, count))
-       return (ft_putstr("Error"));
+    {
+        //ft_lstclear(stack);
+        return (ft_putstr("Error"));
+    }
      while (stack->next != NULL)
      {
-         printf("ag : %d\n", stack->number);
+         printf("ag : %lld\n", stack->number);
          stack = stack->next;
      }
     // if (ft_sort(stack))
+    // {
+    //     ft_lstclear(stack);
     //     return (ft_putstr("Error"));
+    // }
     return (0);
 }

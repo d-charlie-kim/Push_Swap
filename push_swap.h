@@ -19,8 +19,8 @@
 
 typedef struct  s_stack
 {
-    int             number;
-    struct s_stack   *next;
+    long long       number;
+    struct s_stack  *next;
 }               t_stack;
 
 int     ft_split(char **argv, t_stack *stack);
