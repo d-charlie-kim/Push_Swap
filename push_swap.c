@@ -12,16 +12,16 @@
 
 #include "push_swap.h"
 
-int     ft_split(char **argv, int *stack)
+int     ft_split(char **argv, t_stack *stack)
 {
-    int i;
-    int j;
-    int k;
-    int minus;
+    t_stack *temp;
+    int     i;
+    int     j;
+    int     minus;
 
     i = 1;
-    k = 0;
-    while (argv[i])
+    temp = stack;
+     while (argv[i])
     {
         j = 0;
         while (argv[i][j])
@@ -36,11 +36,14 @@ int     ft_split(char **argv, int *stack)
                 }
                 while (argv[i][j] >= 48 && argv[i][j] <=57 && argv[i][j])
                 {
-                    stack[k] = (stack[k] * 10) + argv[i][j] - '0';
+                    temp->number = (temp->number * 10) + argv[i][j] - '0';
                     j++;
                 }
-                stack[k] = stack[k] * minus;
-                k++;
+                temp->number = temp->number * minus;
+                temp->next = (t_stack *)malloc(sizeof(t_stack));
+                temp = temp->next;
+                temp->number = 0;
+                temp->next = NULL;
             }
         i++;
     }
@@ -89,54 +92,51 @@ int     ft_putstr(char *str)
     return (0);
 }
 
-int     ft_duplicate(int *stack, int count)
+int     ft_duplicate(t_stack *stack, int count)
 {
     int i;
-    int j;
+    t_stack *temp;
+    t_stack *temp2;
 
     i = 0;
-    while (i < count)
+    temp = stack;
+    while (temp->next != NULL)
     {
-        j = i + 1;
-        while (j < count)
+        temp2 = temp->next;
+        while (temp2->next != NULL)
         {
-            if (stack[i] == stack[j])
+            if (temp->number == temp2->number)
                 return (1);
-            j++;
+            temp2 = temp2->next;
         }
-        i++;
+        temp = temp->next;
     }
     return (0);
 }
 
 int     main(int argc, char **argv)
 {
-    int     *stack;
-    int     Error_check;
-    int     count;
-    int     i;
+    t_stack     *stack;
+    int         count;
 
     if (argc < 2)
         return (ft_putstr("Error"));
     count = ft_count(argv);
     if (count <= 0)
         return (ft_putstr("Error"));
-    stack = (int *)malloc(sizeof(int) * count);
-    if (!stack)
+    stack = (t_stack *)malloc(sizeof(t_stack));
+    if (!(stack))
         return (ft_putstr("Memory Error"));
-    i = 0;
-    while (i < count)
-        stack[i++] = 0;
+    stack->next = NULL;
     if (ft_split(argv, stack))
         return (ft_putstr("Error"));
     if (ft_duplicate(stack, count))
        return (ft_putstr("Error"));
-    int a = 0;
-    while (a < count)
-    {
-        printf("ag : %d\n", stack[a]);
-        a++;
-    }
+     while (stack->next != NULL)
+     {
+         printf("ag : %d\n", stack->number);
+         stack = stack->next;
+     }
     // if (ft_sort(stack))
     //     return (ft_putstr("Error"));
     return (0);
