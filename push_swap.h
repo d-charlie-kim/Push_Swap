@@ -23,14 +23,24 @@ typedef struct	s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-int		ft_split(char **argv, t_stack *stack);
+int		ft_isnum(char c);
+int		ft_split(char **argv, t_stack **stack, int i, int j);
 
-int		ft_arg_check(char **argv);
+int		ft_error(char *str, t_stack *stack_a, t_stack *stack_b);
 int		ft_putstr(char *str);
-int		ft_duplicate(t_stack *stack, int count);
+
+int		arg_check(char **argv);
+int		valid_check(char **argv, int count, int i, int j);
+int		arg_range_check(char **argv, int count, int i, int j);
+int		duplicate_check(t_stack *stack, int count);
 
 void	ft_lstclear(t_stack *stack);
-t_stack	ft_lstadd_back(t_stack *stack);
+t_stack	*ft_lstadd(t_stack *stack);
+
+int		partition(int *str, int left, int right);
+void	sorting(int *str, int left, int right);
+int		quick_sort(t_stack *stack, int count);
+int		lst_to_str(int **str, t_stack *stack, int count);
 
 void	ft_swap(t_stack **stack);
 void	swap_a(t_stack **stack_a);

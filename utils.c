@@ -23,5 +23,13 @@ int	ft_putstr(char *str)
 		i++;
 	}
 	write(1, "\n", 1);
-	return (0);
+	return (-1);
+}
+
+int	ft_error(char *str, t_stack *stack_a, t_stack *stack_b)
+{
+	ft_lstclear(stack_a);
+	ft_lstclear(stack_b);
+	ft_putstr(str);
+	return (-1);
 }

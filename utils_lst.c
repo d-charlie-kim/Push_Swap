@@ -18,6 +18,8 @@ void	ft_lstclear(t_stack *stack)
 	t_stack *temp2;
 
 	temp2 = stack;
+	if (!temp2)
+		return ;
 	while (temp != NULL)
 	{
 		temp = (temp2)->next;
@@ -35,7 +37,15 @@ void	ft_lstclear(t_stack *stack)
 	stack = NULL;
 }
 
-// t_stack ft_lstadd_back(t_stack *stack)
-// {
+t_stack		*ft_lstadd(t_stack *stack)
+{
+	t_stack *temp;
 
-// }
+	temp = stack;
+	temp = (t_stack *)malloc(sizeof(t_stack));
+	if (!temp)
+		return (NULL);
+	temp->next = NULL;
+	temp->number = 0;
+	return (temp);
+}
