@@ -6,46 +6,50 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 21:53:57 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/18 07:08:19 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/05/20 00:47:35 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isnum(char c)
+void	ft_parse(char **argv, t_stack **stack_a, int max)
 {
-	if ((c < 48 || c > 57) && c != '-')
-		return (1);
-	if ((c >= 48 && c <= 57))
-		return (2);
-	return (1);
-}
+	int		i;
+	int		count;
 
-int	ft_split(char **argv, t_stack **stack, int i, int j)
-{
-	t_stack	*temp;
-	int		minus;
-
-	temp = *stack;
+	i = 1;
+	count = 0;
 	while (argv[i])
 	{
-		temp = ft_lstadd(temp);
-		if (!(temp))
-			return (ft_error("Malloc Error", *stack, NULL));
-		j = 0;
-		while (argv[i][j])
-		{
-			minus = 1;
-			while ((ft_isnum(argv[i][j]) && argv[i][j]))
-				j++;
-			if (argv[i][j] == '-')
-				minus = -1;
-			while ((argv[i][j] >= 48 && argv[i][j] <= 57) && argv[i][j])
-				temp->number = (temp->number * 10) + argv[i][j++] - '0';
-			temp->number = temp->number * minus;
-			temp = temp->next;
-		}
+		count = ft_split(argv[i], stack_a, max, count);
 		i++;
 	}
-	return (0);
+}
+
+int		ft_split(char *argv, t_stack **stack, int max, int count)
+{
+	int		i;
+	int		minus;
+	t_stack	*temp;
+
+	i = 0;
+	temp = *stack;
+	while (argv[i] && count < max)
+	{
+		temp = ft_lstnew(stack, &temp);
+		while (argv[i] == ' ' && argv[i])
+			i++;
+		minus = ft_isminus(argv[i]);
+		if ((argv[i] == '-' || argv[i] == '+') && argv[i])
+			i++;
+		while (ft_isdigit(argv[i]) && argv[i])
+		{
+			temp->number = (temp->number * 10) + argv[i] - '0';
+			i++;
+		}
+		count++;
+		temp->number = temp->number * minus;
+		temp = temp->next;
+	}
+	return (count);
 }

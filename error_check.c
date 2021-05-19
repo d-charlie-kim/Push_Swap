@@ -12,47 +12,50 @@
 
 #include "push_swap.h"
 
-int	duplicate_check(t_stack *stack, int count)
+int		arg_check(int argc, char **argv)
 {
-	int		i;
-	t_stack	*temp;
-	t_stack	*temp2;
+	int	count;
+	int	num;
 
-	i = 0;
-	temp = stack;
-	while (temp->next != NULL)
+	count = 0;
+	if (argc >= 2)
 	{
-		if (temp->number > 2147483647 || (temp->number < -2147483648))
-			return (ft_error("Error", stack, NULL));
-		temp2 = temp->next;
-		while (temp2->next != NULL)
-		{
-			if (temp->number == temp2->number)
-				return (-1);
-			temp2 = temp2->next;
-		}
-		temp = temp->next;
+		valid_check(argv);
+		count = arg_range_check(argv, count, num);
+		if (count >= 1)
+			return (count);
 	}
-	return (0);
+	ft_error("ARG Error", NULL, NULL);
+	exit (-1);
 }
 
-int	arg_check(char **argv)
+void	duplicate_check(t_stack *stack)
 {
-	int count;
-	int i;
-	int j;
+	t_stack	*first;
+	t_stack	*second;
+
+	first = stack;
+	while (first->next != NULL)
+	{
+		if (first->number > 2147483647 || (first->number < -2147483648))
+			ft_error("Overflow Error", stack, NULL);
+		second = first->next;
+		while (second->next != NULL)
+		{
+			if (first->number == second->number)
+				ft_error("Duplicate Error", stack, NULL);
+			second = second->next;
+		}
+		first = first->next;
+	}
+}
+
+void	valid_check(char **argv)
+{
+	int	i;
+	int	j;
 
 	i = 1;
-	j = 0;
-	count = 0;
-	count = valid_check(argv, count, i, j);
-	if (arg_range_check(argv, count, i, j) == -1)
-		count = -1;
-	return (count);
-}
-
-int	valid_check(char **argv, int count, int i, int j)
-{
 	while (argv[i])
 	{
 		j = 0;
@@ -63,20 +66,20 @@ int	valid_check(char **argv, int count, int i, int j)
 			if ((argv[i][j] == '-' || argv[i][j] == '+') && argv[i][j])
 				j++;
 			if ((argv[i][j] < 48 || argv[i][j] > 57) && argv[i][j])
-				return (-1);
-			count++;
+				ft_error("ARG Error", NULL, NULL);
 			while (argv[i][j] >= 48 && argv[i][j] <= 57 && argv[i][j])
 				j++;
 		}
 		i++;
 	}
-	return (count);
 }
 
-int	arg_range_check(char **argv, int count, int i, int j)
+int		arg_range_check(char **argv, int count, int num)
 {
-	int	num;
+	int	i;
+	int	j;
 
+	i = 1;
 	while (argv[i])
 	{
 		j = 0;
@@ -85,16 +88,25 @@ int	arg_range_check(char **argv, int count, int i, int j)
 			num = 0;
 			while ((argv[i][j] < 48 || argv[i][j] > 57) && argv[i][j])
 				j++;
-			count++;
+			if (argv[i][j])
+				count++;
 			while (argv[i][j] >= 48 && argv[i][j] <= 57 && argv[i][j])
 			{
 				j++;
 				num++;
 			}
 			if (num >= 11)
-				return (-1);
+				ft_error("Overflow Error", NULL, NULL);
 		}
 		i++;
 	}
-	return (0);
+	return (count);
+}
+
+void	ft_error(char *str, t_stack *stack_a, t_stack *stack_b)
+{
+	ft_lstclear(stack_a);
+	ft_lstclear(stack_b);
+	ft_putstr(str);
+	exit (-1);
 }

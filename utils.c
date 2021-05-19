@@ -26,10 +26,16 @@ int	ft_putstr(char *str)
 	return (-1);
 }
 
-int	ft_error(char *str, t_stack *stack_a, t_stack *stack_b)
+int		ft_isdigit(char c)
 {
-	ft_lstclear(stack_a);
-	ft_lstclear(stack_b);
-	ft_putstr(str);
-	return (-1);
+	if ((c >= 48 && c <= 57))
+		return (1);
+	return (0);
+}
+
+int		ft_isminus(char c)
+{
+	if (c == '-')
+		return (-1);
+	return (1);
 }

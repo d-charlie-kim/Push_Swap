@@ -20,14 +20,9 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc >= 2)
-		count = arg_check(argv);
-	if (count <= 0 || argc < 2)
-		return (ft_putstr("Error"));
-	if (ft_split(argv, &stack_a, 1, 0) == -1)
-		return (ft_error("Error", stack_a, NULL));
-	if (duplicate_check(stack_a, count) == -1)
-		return (ft_error("Error", stack_a, NULL));
+	count = arg_check(argc, argv);
+	ft_parse(argv, &stack_a, count);
+	duplicate_check(stack_a);
 
 
 //	if (quick_sort(stack_a, count))
@@ -40,26 +35,26 @@ int	main(int argc, char **argv)
 	// reverse_rotate_both(&stack_a, &stack_b);
 	// swap_both(&stack_a, &stack_b);
 
-	// printf ("\nstack A  //  stack B\n");
-	// while (stack_a != NULL || stack_b != NULL)
-	// {
-	// 	printf("||  ");
-	// 	if (stack_a != NULL)
-	// 	{
-	// 		printf("%lld", stack_a->number);
-	// 		stack_a = stack_a->next;
-	// 	}
-	// 	else
-	// 		printf(" ");
-	// 	printf("          ");
-	// 	if (stack_b != NULL)
-	// 	{
-	// 		printf("%lld", stack_b->number);
-	// 		stack_b = stack_b->next;
-	// 	}
-	// 	else
-	// 		printf(" ");
-	// 	printf("\n");
-	// }
+	printf ("\nstack A  //  stack B\n");
+	while (stack_a != NULL || stack_b != NULL)
+	{
+		printf("||  ");
+		if (stack_a != NULL)
+		{
+			printf("%lld", stack_a->number);
+			stack_a = stack_a->next;
+		}
+		else
+			printf(" ");
+		printf("          ");
+		if (stack_b != NULL)
+		{
+			printf("%lld", stack_b->number);
+			stack_b = stack_b->next;
+		}
+		else
+			printf(" ");
+		printf("\n");
+	}
 	return (0);
 }

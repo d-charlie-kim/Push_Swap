@@ -23,19 +23,21 @@ typedef struct	s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-int		ft_isnum(char c);
-int		ft_split(char **argv, t_stack **stack, int i, int j);
-
-int		ft_error(char *str, t_stack *stack_a, t_stack *stack_b);
-int		ft_putstr(char *str);
-
-int		arg_check(char **argv);
-int		valid_check(char **argv, int count, int i, int j);
-int		arg_range_check(char **argv, int count, int i, int j);
-int		duplicate_check(t_stack *stack, int count);
-
 void	ft_lstclear(t_stack *stack);
-t_stack	*ft_lstadd(t_stack *stack);
+t_stack	*ft_lstnew(t_stack **stack, t_stack **new);
+
+void	ft_parse(char **argv, t_stack **stack_a, int max);
+int		ft_split(char *argv, t_stack **stack, int max, int count);
+
+int		ft_putstr(char *str);
+int		ft_isdigit(char c);
+int		ft_isminus(char c);
+
+int		arg_check(int argc, char **argv);
+void	duplicate_check(t_stack *stack);
+void	valid_check(char **argv);
+int		arg_range_check(char **argv, int count, int num);
+void	ft_error(char *str, t_stack *stack_a, t_stack *stack_b);
 
 int		partition(int *str, int left, int right);
 void	sorting(int *str, int left, int right);
