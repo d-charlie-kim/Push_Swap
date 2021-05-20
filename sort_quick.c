@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort.c                                       :+:      :+:    :+:   */
+/*   sort_quick.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 03:25:59 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/18 03:26:39 by dokkim           ###   ########.fr       */
+/*   Created: 2021/05/20 20:16:31 by dokkim            #+#    #+#             */
+/*   Updated: 2021/05/20 20:16:32 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,10 @@ int		partition(int **string, int left, int right)
 		while (high > left && str[left] < str[high])
 			high--;
 		if (low < high)
-		{
-			temp = str[low];
-			str[low] = str[right];
-			str[right] = temp;
-		}
+			ft_change(string, low, right);
 	}
 	if (low > high)
-	{
-		temp = str[left];
-		str[left] = str[high];
-		str[high] = temp;
-	}
+		ft_change(string, left, high);
 	return (high);
 }
 
@@ -67,12 +59,4 @@ int		quick_sort(t_stack **stack_a, t_stack **stack_b, int count)
 	sorting(&str, 0, count - 1);
 	int i = 0;
 	return (str[count / 2]);
-}
-
-void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
-{
-	int	median;
-
-	median = quick_sort(stack_a, stack_b, count);
-	printf("median : %d\n", median);
 }

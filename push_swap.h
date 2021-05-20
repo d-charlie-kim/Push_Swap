@@ -33,6 +33,7 @@ int		ft_split(char *argv, t_stack **stack, int max, int count);
 int		ft_putstr(char *str);
 int		ft_isdigit(char c);
 int		ft_isminus(char c);
+void	ft_change(int **string, int i, int j);
 
 int		arg_check(int argc, char **argv);
 void	duplicate_check(t_stack *stack);

@@ -39,3 +39,14 @@ int		ft_isminus(char c)
 		return (-1);
 	return (1);
 }
+
+void	ft_change(int **string, int i, int j)
+{
+	int	temp;
+	int	*str;
+
+	str = *string;
+	temp = str[i];
+	str[i] = str[j];
+	str[j] = temp;
+}
