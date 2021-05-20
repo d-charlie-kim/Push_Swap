@@ -24,7 +24,7 @@ typedef struct	s_stack
 }				t_stack;
 
 void	ft_lstclear(t_stack *stack);
-t_stack	*ft_lstnew(t_stack **stack, t_stack **new);
+void	ft_lstnew(t_stack **stack, t_stack **new);
 
 void	ft_parse(char **argv, t_stack **stack_a, int max);
 int		ft_split(char *argv, t_stack **stack, int max, int count);

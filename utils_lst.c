@@ -37,16 +37,14 @@ void	ft_lstclear(t_stack *stack)
 	stack = NULL;
 }
 
-t_stack		*ft_lstnew(t_stack **stack, t_stack **new)
+void	ft_lstnew(t_stack **stack, t_stack **new)
 {
 	t_stack *temp;
 
-	temp = *new;
 	temp = (t_stack *)malloc(sizeof(t_stack));
 	if (!temp)
 		ft_error("Malloc Error", *stack, NULL);
 	temp->next = NULL;
 	temp->number = 0;
-	*new = temp;
-	return (temp);
+	(*new)->next = temp;
 }
