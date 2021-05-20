@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	count = arg_check(argc, argv);
+	ft_lstadd(&stack_a, count);
 	ft_parse(argv, &stack_a, count);
 	duplicate_check(stack_a);
 
@@ -29,11 +30,12 @@ int	main(int argc, char **argv)
 //		return (ft_error("Error", stack_a, stack_b));
 
 
-	// push_b(&stack_a, &stack_b);
-	// push_b(&stack_a, &stack_b);
-	// rotate_both(&stack_a, &stack_b);
-	// reverse_rotate_both(&stack_a, &stack_b);
-	// swap_both(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	rotate_both(&stack_a, &stack_b);
+	reverse_rotate_both(&stack_a, &stack_b);
+	swap_both(&stack_a, &stack_b);
 
 	printf ("\nstack A  //  stack B\n");
 	while (stack_a != NULL || stack_b != NULL)

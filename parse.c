@@ -16,21 +16,14 @@ void	ft_parse(char **argv, t_stack **stack_a, int max)
 {
 	int		i;
 	int		count;
-	t_stack	*temp;
 
 	i = 1;
 	count = 0;
-	temp = (t_stack *)malloc(sizeof(t_stack));
-	if (!temp)
-		ft_error("Malloc Error", *stack_a, NULL);
-	temp->next = NULL;
 	while (argv[i])
 	{
-		count = ft_split(argv[i], &temp, max, count);
+		count = ft_split(argv[i], stack_a, max, count);
 		i++;
 	}
-	*stack_a = temp->next;
-	free(temp);
 }
 
 int		ft_split(char *argv, t_stack **stack, int max, int count)
@@ -43,8 +36,6 @@ int		ft_split(char *argv, t_stack **stack, int max, int count)
 	temp = *stack;
 	while (argv[i] && count < max)
 	{
-		ft_lstnew(stack, &temp);
-		temp = temp->next;
 		while (argv[i] == ' ' && argv[i])
 			i++;
 		minus = ft_isminus(argv[i]);
@@ -57,6 +48,7 @@ int		ft_split(char *argv, t_stack **stack, int max, int count)
 		}
 		count++;
 		temp->number = temp->number * minus;
+		temp = temp->next;
 	}
 	return (count);
 }

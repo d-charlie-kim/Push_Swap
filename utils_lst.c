@@ -37,14 +37,27 @@ void	ft_lstclear(t_stack *stack)
 	stack = NULL;
 }
 
-void	ft_lstnew(t_stack **stack, t_stack **new)
+void	ft_lstadd(t_stack **stack, int count)
 {
 	t_stack *temp;
+	int		i;
 
+	i = 1;
 	temp = (t_stack *)malloc(sizeof(t_stack));
 	if (!temp)
-		ft_error("Malloc Error", *stack, NULL);
-	temp->next = NULL;
+		ft_error("Malloc Error", temp, NULL);
 	temp->number = 0;
-	(*new)->next = temp;
+	temp->next = NULL;
+	*stack = temp;
+	while (i < count)
+	{
+		temp->next = (t_stack *)malloc(sizeof(t_stack));
+		if (!temp)
+			ft_error("Malloc Error", *stack, NULL);
+		temp = temp->next;
+		temp->number = 0;
+		temp->next = NULL;
+		i++;
+	}
+	printf("%p\n", (*stack));
 }
