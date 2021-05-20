@@ -38,13 +38,13 @@ int		partition(int **string, int left, int right)
 
 void	sorting(int **str, int left, int right)
 {
-	int mark;
+	int pivot;
 
 	if (left < right)
 	{
-		mark = partition(str, left, right);
-		sorting(str, left, mark - 1);
-		sorting(str, mark + 1, right);
+		pivot = partition(str, left, right);
+		sorting(str, left, pivot - 1);
+		sorting(str, pivot + 1, right);
 	}
 }
 
