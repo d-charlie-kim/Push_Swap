@@ -12,56 +12,39 @@
 
 #include "push_swap.h"
 
-int		lst_to_str(int **str, t_stack *stack, int count)
-{
-	t_stack	*temp;
-	int		i;
-
-	i = 0;
-	temp = stack;
-	while (i < count)
-	{
-		(*str)[i] = temp->number;
-		i++;
-		temp = temp->next;
-	}
-	return (0);
-}
-
-int		partition(int *str, int left, int right)
+int		partition(int **string, int left, int right)
 {
 	int	temp;
-	int	mark;
 	int	low;
 	int	high;
-	printf("Hello\n");
+	int	*str;
+	
+	str = *string;
 	low = left + 1;
 	high = right;
-	mark = str[left];
 	while (low < high)
 	{
-		while (low <= right && mark > str[low])
+		while (low < right && str[left] > str[low])
 			low++;
-		while (high >= left && mark < str[high])
+		while (high > left && str[left] < str[high])
 			high--;
-		if (low > high)
+		if (low < high)
 		{
 			temp = str[low];
 			str[low] = str[right];
 			str[right] = temp;
 		}
 	}
-	if (low < high)
+	if (low > high)
 	{
 		temp = str[left];
 		str[left] = str[high];
 		str[high] = temp;
 	}
-	printf("Hello\n");
 	return (high);
 }
 
-void	sorting(int *str, int left, int right)
+void	sorting(int **str, int left, int right)
 {
 	int mark;
 
@@ -73,23 +56,23 @@ void	sorting(int *str, int left, int right)
 	}
 }
 
-int		quick_sort(t_stack *stack, int count)
+int		quick_sort(t_stack **stack_a, t_stack **stack_b, int count)
 {
-	int		*str;
+	int *str;
 
 	str = (int *)malloc(sizeof(int) * count);
 	if (!str)
-		return (-1);
-	if (lst_to_str(&str, stack, count))
-		return (-1);
-	sorting(str, 0, count - 1);
+		ft_error("Malloc Error", *stack_a, *stack_b);
+	lst_to_str(&str, stack_a, count);
+	sorting(&str, 0, count - 1);
 	int i = 0;
-	while (i < count)
-	{
-		printf("ag : %d ", str[i]);
-		printf("\n");
-		i++;
-	}
-	printf ("median : %d\n", str[count / 2]);
-	return (0);
+	return (str[count / 2]);
+}
+
+void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
+{
+	int	median;
+
+	median = quick_sort(stack_a, stack_b, count);
+	printf("median : %d\n", median);
 }

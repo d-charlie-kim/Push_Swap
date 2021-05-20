@@ -25,6 +25,7 @@ typedef struct	s_stack
 
 void	ft_lstclear(t_stack *stack);
 void	ft_lstadd(t_stack **stack, int count);
+void	lst_to_str(int **str, t_stack **stack, int count);
 
 void	ft_parse(char **argv, t_stack **stack_a, int max);
 int		ft_split(char *argv, t_stack **stack, int max, int count);
@@ -39,10 +40,10 @@ void	valid_check(char **argv);
 int		arg_range_check(char **argv, int count, int num);
 void	ft_error(char *str, t_stack *stack_a, t_stack *stack_b);
 
-int		partition(int *str, int left, int right);
-void	sorting(int *str, int left, int right);
-int		quick_sort(t_stack *stack, int count);
-int		lst_to_str(int **str, t_stack *stack, int count);
+void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count);
+int		partition(int **str, int left, int right);
+void	sorting(int **str, int left, int right);
+int		quick_sort(t_stack **stack_a, t_stack **stack_b, int count);
 
 void	ft_swap(t_stack **stack);
 void	swap_a(t_stack **stack_a);

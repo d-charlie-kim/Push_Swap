@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst.c                                           :+:      :+:    :+:   */
+/*   utils_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:06:29 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/17 16:06:31 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/05/20 18:07:57 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,19 @@ void	ft_lstadd(t_stack **stack, int count)
 		temp->next = NULL;
 		i++;
 	}
-	printf("%p\n", (*stack));
+}
+
+void	lst_to_str(int **str, t_stack **stack, int count)
+{
+	t_stack	*temp;
+	int		i;
+
+	i = 0;
+	temp = *stack;
+	while (i < count)
+	{
+		(*str)[i] = temp->number;
+		temp = temp->next;
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 21:50:25 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/18 07:07:46 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/05/20 18:08:28 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		arg_check(int argc, char **argv)
 			return (count);
 	}
 	ft_error("ARG Error", NULL, NULL);
-	exit (-1);
+	exit(-1);
 }
 
 void	duplicate_check(t_stack *stack)
@@ -40,7 +40,7 @@ void	duplicate_check(t_stack *stack)
 		if (first->number > 2147483647 || (first->number < -2147483648))
 			ft_error("Overflow Error", stack, NULL);
 		second = first->next;
-		while (second->next != NULL)
+		while (second != NULL)
 		{
 			if (first->number == second->number)
 				ft_error("Duplicate Error", stack, NULL);
@@ -108,5 +108,5 @@ void	ft_error(char *str, t_stack *stack_a, t_stack *stack_b)
 	ft_lstclear(stack_a);
 	ft_lstclear(stack_b);
 	ft_putstr(str);
-	exit (-1);
+	exit(-1);
 }
