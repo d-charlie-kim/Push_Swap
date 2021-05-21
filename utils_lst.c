@@ -61,7 +61,7 @@ void	ft_lstadd(t_stack **stack, int count)
 	}
 }
 
-void	lst_to_str(int **str, t_stack **stack, int count)
+void	lst_to_str(int *str, t_stack **stack, int count)
 {
 	t_stack	*temp;
 	int		i;
@@ -70,7 +70,7 @@ void	lst_to_str(int **str, t_stack **stack, int count)
 	temp = *stack;
 	while (i < count)
 	{
-		(*str)[i] = temp->number;
+		str[i] = temp->number;
 		temp = temp->next;
 		i++;
 	}

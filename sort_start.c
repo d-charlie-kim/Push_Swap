@@ -18,6 +18,8 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 	int		i;
 
 	i = 0;
+	if ((*stack_a)->next == NULL)
+		return ;
 	median = quick_sort(stack_a, stack_b, count);
 	printf("median : %d\n", median);
 	while (i < count)
@@ -43,5 +45,4 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 		}
 		i++;
 	}
-	while ()
 }

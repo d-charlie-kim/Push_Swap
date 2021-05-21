@@ -34,6 +34,7 @@ int		ft_split(char *argv, t_stack **stack, int max, int count)
 
 	i = 0;
 	temp = *stack;
+	ft_find_node(&temp, count);
 	while (argv[i] && count < max)
 	{
 		while (argv[i] == ' ' && argv[i])

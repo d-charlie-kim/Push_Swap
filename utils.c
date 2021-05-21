@@ -40,13 +40,20 @@ int		ft_isminus(char c)
 	return (1);
 }
 
-void	ft_change(int **string, int i, int j)
+void	ft_change(int *str, int i, int j)
 {
 	int	temp;
-	int	*str;
 
-	str = *string;
 	temp = str[i];
 	str[i] = str[j];
 	str[j] = temp;
+}
+
+void	ft_find_node(t_stack **temp, int count)
+{
+	while (count > 0)
+	{
+		(*temp) = (*temp)->next;
+		count--;
+	}
 }

@@ -12,31 +12,29 @@
 
 #include "push_swap.h"
 
-int		partition(int **string, int left, int right)
+int		partition(int *str, int left, int right)
 {
 	int	temp;
 	int	low;
 	int	high;
-	int	*str;
 	
-	str = *string;
 	low = left + 1;
 	high = right;
 	while (low < high)
 	{
-		while (low < right && str[left] > str[low])
+		while (low <= right && str[left] > str[low])
 			low++;
-		while (high > left && str[left] < str[high])
+		while (high >= left && str[left] < str[high])
 			high--;
 		if (low < high)
-			ft_change(string, low, right);
+			ft_change(str, low, right);
 	}
 	if (low > high)
-		ft_change(string, left, high);
+		ft_change(str, left, high);
 	return (high);
 }
 
-void	sorting(int **str, int left, int right)
+void	sorting(int *str, int left, int right)
 {
 	int pivot;
 
@@ -55,8 +53,13 @@ int		quick_sort(t_stack **stack_a, t_stack **stack_b, int count)
 	str = (int *)malloc(sizeof(int) * count);
 	if (!str)
 		ft_error("Malloc Error", *stack_a, *stack_b);
-	lst_to_str(&str, stack_a, count);
-	sorting(&str, 0, count - 1);
-	int i = 0;
+	lst_to_str(str, stack_a, count);
+	sorting(str, 0, count - 1);
+	int	i = 0;
+	while (i < count)
+	{
+		printf("%d\n", str[i]);
+		i++;
+	}
 	return (str[count / 2]);
 }

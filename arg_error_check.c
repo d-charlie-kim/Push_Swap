@@ -35,7 +35,7 @@ void	duplicate_check(t_stack *stack)
 	t_stack	*second;
 
 	first = stack;
-	while (first->next != NULL)
+	while (first != NULL)
 	{
 		if (first->number > 2147483647 || (first->number < -2147483648))
 			ft_error("Overflow Error", stack, NULL);
