@@ -23,7 +23,7 @@ void	arg_check(int argc, char **argv)
 		len_check(argv, count);
 	}
 	else
-		ft_error("ARG Error", NULL, NULL);
+		exit (0);
 }
 
 void	duplicate_check(t_stack *stack)
@@ -35,12 +35,12 @@ void	duplicate_check(t_stack *stack)
 	while (first != NULL)
 	{
 		if (first->number > 2147483647 || (first->number < -2147483648))
-			ft_error("Overflow Error", stack, NULL);
+			ft_error("Error", stack, NULL);
 		second = first->next;
 		while (second != NULL)
 		{
 			if (first->number == second->number)
-				ft_error("Duplicate Error", stack, NULL);
+				ft_error("Error", stack, NULL);
 			second = second->next;
 		}
 		first = first->next;
@@ -63,7 +63,7 @@ void	valid_check(char **argv)
 			if ((argv[i][j] == '-' || argv[i][j] == '+') && argv[i][j])
 				j++;
 			if ((argv[i][j] < 48 || argv[i][j] > 57) && argv[i][j])
-				ft_error("ARG Error", NULL, NULL);
+				ft_error("Error", NULL, NULL);
 			while (argv[i][j] >= 48 && argv[i][j] <= 57 && argv[i][j])
 				j++;
 		}
@@ -96,7 +96,7 @@ void	len_check(char **argv, int count)
 				count++;
 			}
 			if (count >= 11)
-				ft_error("ARG Error", NULL, NULL);
+				ft_error("Error", NULL, NULL);
 		}
 		i++;
 	}

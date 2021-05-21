@@ -45,7 +45,7 @@ void	ft_lstadd(t_stack **stack, int count)
 	i = 1;
 	temp = (t_stack *)malloc(sizeof(t_stack));
 	if (!temp)
-		ft_error("Malloc Error", temp, NULL);
+		ft_error("Error", temp, NULL);
 	temp->number = 0;
 	temp->next = NULL;
 	*stack = temp;
@@ -53,7 +53,7 @@ void	ft_lstadd(t_stack **stack, int count)
 	{
 		temp->next = (t_stack *)malloc(sizeof(t_stack));
 		if (!temp)
-			ft_error("Malloc Error", *stack, NULL);
+			ft_error("Error", *stack, NULL);
 		temp = temp->next;
 		temp->number = 0;
 		temp->next = NULL;

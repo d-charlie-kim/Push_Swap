@@ -19,7 +19,7 @@ int		sorting(t_stack **stack_a, t_stack **stack_b, int count)
 
 	str = (int *)malloc(sizeof(int) * count);
 	if (!str)
-		ft_error("Malloc Error", *stack_a, *stack_b);
+		ft_error("Error", *stack_a, *stack_b);
 	lst_to_str(str, stack_a, count);
 	median = get_median(str, count);
 	free(str);

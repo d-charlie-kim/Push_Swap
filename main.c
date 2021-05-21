@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	arg_check(argc, argv);
 	count = arg_count(argv, count);
-	printf("Hello\n");
 	ft_lstadd(&stack_a, count);
 	ft_parse(argv, &stack_a, count);
 	duplicate_check(stack_a);

@@ -16,14 +16,11 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 {
 	int		median;
 
-	while (count > 3)
-	{
 		median = sorting(stack_a, stack_b, count);
 								printf("median : %d\n", median);
 								printf("count : %d\n", count);
 		ft_median_sort(stack_a, stack_b, median, count);
-		if (count % 2 == 1)
-			count++;
-		count = (count / 2);
-	}
+		// if (count % 2 == 1)
+		// 	count++;
+		// count = (count / 2);
 }

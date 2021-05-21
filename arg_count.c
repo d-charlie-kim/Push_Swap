@@ -32,5 +32,7 @@ int		arg_count(char **argv, int count)
 		}
 		i++;
 	}
+	if (count == 0)
+		ft_error("Error", NULL, NULL);
 	return (count);
 }
