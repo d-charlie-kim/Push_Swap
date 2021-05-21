@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_start.c                                       :+:      :+:    :+:   */
+/*   arg_count.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 03:25:59 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/20 20:16:44 by dokkim           ###   ########.fr       */
+/*   Created: 2021/05/22 02:15:24 by dokkim            #+#    #+#             */
+/*   Updated: 2021/05/22 02:15:25 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
+int		arg_count(char **argv, int count)
 {
-	int		median;
+	int	i;
+	int	j;
 
-	while (count > 3)
+	i = 1;
+	while (argv[i])
 	{
-		median = sorting(stack_a, stack_b, count);
-								printf("median : %d\n", median);
-								printf("count : %d\n", count);
-		ft_median_sort(stack_a, stack_b, median, count);
-		if (count % 2 == 1)
-			count++;
-		count = (count / 2);
+		j = 0;
+		while (argv[i][j])
+		{
+			while ((argv[i][j] < 48 || argv[i][j] > 57) && argv[i][j])
+				j++;
+			if (argv[i][j])
+				count++;
+			while (argv[i][j] >= 48 && argv[i][j] <= 57 && argv[i][j])
+				j++;
+		}
+		i++;
 	}
+	return (count);
 }

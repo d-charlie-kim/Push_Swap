@@ -12,22 +12,18 @@
 
 #include "push_swap.h"
 
-int		arg_check(int argc, char **argv)
+void	arg_check(int argc, char **argv)
 {
-	int	count;
-	int	num;
+	int count;
 
 	count = 0;
 	if (argc >= 2)
 	{
 		valid_check(argv);
 		len_check(argv, count);
-		count = arg_range_check(argv, count, num);
-		if (count >= 1)
-			return (count);
 	}
-	ft_error("ARG Error", NULL, NULL);
-	exit(-1);
+	else
+		ft_error("ARG Error", NULL, NULL);
 }
 
 void	duplicate_check(t_stack *stack)
@@ -80,7 +76,7 @@ void	len_check(char **argv, int count)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	j = 0;
 	while (argv[i])
 	{

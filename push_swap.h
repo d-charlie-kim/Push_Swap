@@ -41,18 +41,18 @@ int		ft_isdigit(char c);
 int		ft_isminus(char c);
 void	ft_change(int *str, int i, int j);
 
-int		arg_check(int argc, char **argv);
+void	arg_check(int argc, char **argv);
 void	duplicate_check(t_stack *stack);
 void	valid_check(char **argv);
-void	len_check(char **argv, int count)
+void	len_check(char **argv, int count);
 
 void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count);
+
 void	median_to_a(t_stack **stack_a, t_stack **stack_b, int median, int count);
 void	median_to_b(t_stack **stack_a, t_stack **stack_b, int median, int count);
 void	ft_median_sort(t_stack **stack_a, t_stack **stack_b, int median, int count);
-
-int		get_median(t_stack **stack_a, t_stack **stack_b, int count);
-int		sorting(int *str, int end);
+int		get_median(int *str, int end);
+int		sorting(t_stack **stack_a, t_stack **stack_b, int count);
 
 void	ft_swap(t_stack **stack);
 void	swap_a(t_stack **stack_a);
