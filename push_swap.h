@@ -28,6 +28,11 @@ void	ft_lstadd(t_stack **stack, int count);
 void	lst_to_str(int *str, t_stack **stack, int count);
 void	ft_find_node(t_stack **temp, int count);
 
+void	ft_done(t_stack **stack);
+int		is_already_sorted(t_stack *stack);
+void	ft_error(char *str, t_stack *stack_a, t_stack *stack_b);
+
+int		arg_count(char **argv, int count);
 void	ft_parse(char **argv, t_stack **stack_a, int max);
 int		ft_split(char *argv, t_stack **stack, int max, int count);
 
@@ -39,13 +44,15 @@ void	ft_change(int *str, int i, int j);
 int		arg_check(int argc, char **argv);
 void	duplicate_check(t_stack *stack);
 void	valid_check(char **argv);
-int		arg_range_check(char **argv, int count, int num);
-void	ft_error(char *str, t_stack *stack_a, t_stack *stack_b);
+void	len_check(char **argv, int count)
 
 void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count);
-int		partition(int *str, int left, int right);
-void	sorting(int *str, int left, int right);
-int		quick_sort(t_stack **stack_a, t_stack **stack_b, int count);
+void	median_to_a(t_stack **stack_a, t_stack **stack_b, int median, int count);
+void	median_to_b(t_stack **stack_a, t_stack **stack_b, int median, int count);
+void	ft_median_sort(t_stack **stack_a, t_stack **stack_b, int median, int count);
+
+int		get_median(t_stack **stack_a, t_stack **stack_b, int count);
+int		sorting(int *str, int end);
 
 void	ft_swap(t_stack **stack);
 void	swap_a(t_stack **stack_a);

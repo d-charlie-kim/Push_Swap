@@ -12,37 +12,55 @@
 
 #include "push_swap.h"
 
-void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
+void	median_to_a(t_stack **stack_a, t_stack **stack_b, int median, int count)
 {
-	int		median;
-	int		i;
+
+}
+
+void	median_to_b(t_stack **stack_a, t_stack **stack_b, int median, int count)
+{
+	int	i;
 
 	i = 0;
-	if ((*stack_a)->next == NULL)
-		return ;
-	median = quick_sort(stack_a, stack_b, count);
-	printf("median : %d\n", median);
-	while (i < count)
-	{	
-		if (((*stack_a)->number) > median)
+	while(i < count / 2)
+	{
+		if (((*stack_a)->number) < median)
 			push_b(stack_a, stack_b);
 		else
 		{
-			if ((*stack_a)->number > ((*stack_a)->next)->number)
-			{
-				if ((*stack_b) && (*stack_b)->next && (*stack_b)->number > ((*stack_b)->next)->number)
-					swap_both(stack_a, stack_b);
-				else
-					swap_a(stack_a);
-			}
-			else
+			while (((*stack_a)->number) >= median)
 			{
 				if ((*stack_b) && (*stack_b)->next && (*stack_b)->number < ((*stack_b)->next)->number)
 					rotate_both(stack_a, stack_b);
 				else
 					rotate_a(stack_a);
 			}
+			push_b(stack_a, stack_b);
 		}
 		i++;
+	}
+}
+
+void	ft_median_sort(t_stack **stack_a, t_stack **stack_b, int median, int count)
+{
+	int	i;
+
+	i = 0;
+	median_to_b(stack_a, stack_b, median, count);
+}
+
+void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
+{
+	int		median;
+
+	while (count > 3)
+	{
+		median = get_median(stack_a, stack_b, count);
+		printf("median : %d\n", median);
+		printf("count : %d\n", count);
+		ft_median_sort(stack_a, stack_b, median, count);
+		if (count % 2 == 1)
+			count++;
+		count = (count / 2);
 	}
 }

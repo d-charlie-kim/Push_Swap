@@ -24,7 +24,10 @@ int	main(int argc, char **argv)
 	ft_lstadd(&stack_a, count);
 	ft_parse(argv, &stack_a, count);
 	duplicate_check(stack_a);
+	if (is_already_sorted(stack_a))
+		ft_done(&stack_a);
 	ft_sort(&stack_a, &stack_b, count);
+
 
 	printf ("\nstack A  //  stack B\n");
 	while (stack_a != NULL || stack_b != NULL)
@@ -47,5 +50,4 @@ int	main(int argc, char **argv)
 			printf(" ");
 		printf("\n");
 	}
-	return (0);
 }

@@ -12,54 +12,40 @@
 
 #include "push_swap.h"
 
-int		partition(int *str, int left, int right)
+int		get_median(t_stack **stack_a, t_stack **stack_b, int count)
 {
-	int	temp;
-	int	low;
-	int	high;
-	
-	low = left + 1;
-	high = right;
-	while (low < high)
-	{
-		while (low <= right && str[left] > str[low])
-			low++;
-		while (high >= left && str[left] < str[high])
-			high--;
-		if (low < high)
-			ft_change(str, low, right);
-	}
-	if (low > high)
-		ft_change(str, left, high);
-	return (high);
-}
-
-void	sorting(int *str, int left, int right)
-{
-	int pivot;
-
-	if (left < right)
-	{
-		pivot = partition(str, left, right);
-		sorting(str, left, pivot - 1);
-		sorting(str, pivot + 1, right);
-	}
-}
-
-int		quick_sort(t_stack **stack_a, t_stack **stack_b, int count)
-{
-	int *str;
+	int	*str;
+	int	median;
 
 	str = (int *)malloc(sizeof(int) * count);
 	if (!str)
 		ft_error("Malloc Error", *stack_a, *stack_b);
 	lst_to_str(str, stack_a, count);
-	sorting(str, 0, count - 1);
-	int	i = 0;
-	while (i < count)
+	median = sorting(str, count);
+	free(str);
+	return (median);
+}
+
+int		sorting(int *str, int end)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	while (i < end)
 	{
-		printf("%d\n", str[i]);
+		count = 0;
+		j = 0;
+		while (j < end)
+		{
+			if (str[i] > str[j])
+				count++;
+			j++;
+		}
+		if (count == end / 2)
+			return (str[i]);
 		i++;
 	}
-	return (str[count / 2]);
+	return (str[i]);
 }

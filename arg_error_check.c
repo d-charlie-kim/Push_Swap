@@ -21,6 +21,7 @@ int		arg_check(int argc, char **argv)
 	if (argc >= 2)
 	{
 		valid_check(argv);
+		len_check(argv, count);
 		count = arg_range_check(argv, count, num);
 		if (count >= 1)
 			return (count);
@@ -74,39 +75,33 @@ void	valid_check(char **argv)
 	}
 }
 
-int		arg_range_check(char **argv, int count, int num)
+void	len_check(char **argv, int count)
 {
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
+	j = 0;
 	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
 		{
-			num = 0;
-			while ((argv[i][j] < 48 || argv[i][j] > 57) && argv[i][j])
+			count = 0;
+			while (argv[i][j] == ' ' && argv[i][j])
 				j++;
-			if (argv[i][j])
-				count++;
+			if ((argv[i][j] == '-' || argv[i][j] == '+') && argv[i][j])
+				j++;
+			while (argv[i][j] == '0' && argv[i][j])
+				j++;
 			while (argv[i][j] >= 48 && argv[i][j] <= 57 && argv[i][j])
 			{
 				j++;
-				num++;
+				count++;
 			}
-			if (num >= 11)
-				ft_error("Overflow Error", NULL, NULL);
+			if (count >= 11)
+				ft_error("ARG Error", NULL, NULL);
 		}
 		i++;
 	}
-	return (count);
-}
-
-void	ft_error(char *str, t_stack *stack_a, t_stack *stack_b)
-{
-	ft_lstclear(stack_a);
-	ft_lstclear(stack_b);
-	ft_putstr(str);
-	exit(-1);
 }

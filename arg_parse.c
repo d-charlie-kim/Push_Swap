@@ -53,3 +53,27 @@ int		ft_split(char *argv, t_stack **stack, int max, int count)
 	}
 	return (count);
 }
+
+int		arg_count(char **argv, int count, int num)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			num = 0;
+			while ((argv[i][j] < 48 || argv[i][j] > 57) && argv[i][j])
+				j++;
+			if (argv[i][j])
+				count++;
+			while (argv[i][j] >= 48 && argv[i][j] <= 57 && argv[i][j])
+				j++;
+		}
+		i++;
+	}
+	return (count);
+}
