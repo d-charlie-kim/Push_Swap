@@ -16,10 +16,13 @@ int		arg_count(char **argv, int count)
 {
 	int	i;
 	int	j;
+	int valid;
 
 	i = 1;
+	count = 0;
 	while (argv[i])
 	{
+		valid = count;
 		j = 0;
 		while (argv[i][j])
 		{
@@ -31,8 +34,8 @@ int		arg_count(char **argv, int count)
 				j++;
 		}
 		i++;
+		if (valid == count)
+			ft_error("Error", NULL, NULL);
 	}
-	if (count == 0)
-		ft_error("Error", NULL, NULL);
 	return (count);
 }
