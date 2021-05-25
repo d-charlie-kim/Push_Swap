@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 19:54:50 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/20 20:17:59 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 00:08:26 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	duplicate_check(stack_a);
 	if (is_already_sorted(stack_a))
 		ft_done(&stack_a);
-	//ft_sort(&stack_a, &stack_b, count);
+	ft_sort(&stack_a, &stack_b, count);
 
 
 	printf ("\nstack A  //  stack B\n");

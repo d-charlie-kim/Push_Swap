@@ -46,14 +46,6 @@ void	duplicate_check(t_stack *stack);
 void	valid_check(char **argv);
 void	len_check(char **argv, int count);
 
-void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count);
-
-void	median_to_a(t_stack **stack_a, t_stack **stack_b, int median, int count);
-void	median_to_b(t_stack **stack_a, t_stack **stack_b, int median, int count);
-void	ft_median_sort(t_stack **stack_a, t_stack **stack_b, int median, int count);
-int		get_median(int *str, int end);
-int		sorting(t_stack **stack_a, t_stack **stack_b, int count);
-
 void	ft_swap(t_stack **stack);
 void	swap_a(t_stack **stack_a);
 void	swap_b(t_stack **stack_b);
@@ -71,5 +63,22 @@ void	ft_rotate(t_stack **stack);
 void	rotate_a(t_stack **stack_a);
 void	rotate_b(t_stack **stack_b);
 void	rotate_both(t_stack **stack_a, t_stack **stack_b);
+
+void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count);
+
+void	median_to_a(t_stack **stack_a, t_stack **stack_b, int median, int count);
+void	median_to_b(t_stack **stack_a, t_stack **stack_b, int median, int count);
+void	ft_median_sort(t_stack **stack_a, t_stack **stack_b, int median, int count);
+int		get_median(int *str, int end);
+int		sorting(t_stack **stack_a, t_stack **stack_b, int count);
+
+void	two_or_three(t_stack **stack_a, t_stack **stack_b, int count);
+void	two_arg(t_stack **stack_a, t_stack **stack_b);
+void	three_arg(t_stack **stack_a, t_stack **stack_b);
+void	two_one_three(t_stack **stack_a, t_stack **stack_b);
+void	two_three_one(t_stack **stack_a, t_stack **stack_b);
+void	one_three_two(t_stack **stack_a, t_stack **stack_b);
+void	three_two_one(t_stack **stack_a, t_stack **stack_b);
+void	three_one_two(t_stack **stack_a, t_stack **stack_b);
 
 #endif
