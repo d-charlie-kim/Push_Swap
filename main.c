@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	duplicate_check(stack_a);
 	if (is_already_sorted(stack_a))
 		ft_done(&stack_a);
-	ft_sort(&stack_a, &stack_b, count);
+	ft_sort(&stack_a, &stack_b, count, 0);
 
 
 	printf ("\nstack A  //  stack B\n");

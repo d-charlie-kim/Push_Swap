@@ -64,7 +64,7 @@ void	rotate_a(t_stack **stack_a);
 void	rotate_b(t_stack **stack_b);
 void	rotate_both(t_stack **stack_a, t_stack **stack_b);
 
-void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count);
+void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count, int i);
 
 void	median_to_a(t_stack **stack_a, t_stack **stack_b, int median, int count);
 void	median_to_b(t_stack **stack_a, t_stack **stack_b, int median, int count);
@@ -80,5 +80,13 @@ void	two_three_one(t_stack **stack_a, t_stack **stack_b);
 void	one_three_two(t_stack **stack_a, t_stack **stack_b);
 void	three_two_one(t_stack **stack_a, t_stack **stack_b);
 void	three_one_two(t_stack **stack_a, t_stack **stack_b);
+
+void	two_or_three_nor(t_stack **stack_a, t_stack **stack_b, int count);
+void	three_arg_nor(t_stack **stack_a, t_stack **stack_b);
+void	two_one_three_nor(t_stack **stack_a, t_stack **stack_b);
+void	two_three_one_nor(t_stack **stack_a, t_stack **stack_b);
+void	one_three_two_nor(t_stack **stack_a, t_stack **stack_b);
+void	three_two_one_nor(t_stack **stack_a, t_stack **stack_b);
+void	three_one_two_nor(t_stack **stack_a, t_stack **stack_b);
 
 #endif
