@@ -12,34 +12,52 @@
 
 #include "push_swap.h"
 
-void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count, int next)
+void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 {
-	int		median;
+	int		first;
+	int		second;
 	int		temp;
+	int		next_chunk;
+	t_stack	*stack;
 
+	stack = *stack_a;
+	temp = count;
+	next_chunk = 0;
 	if (count > 3)
 	{
-		printf("count : %d\n", count);
-		median = sorting(stack_a, stack_b, count);
-		printf("median : %d\n", median);
-		ft_median_sort(stack_a, stack_b, median, count);
-		next = (count / 2);
-		printf("next : %d\n", next);
-		count = count - (count / 2);
-		ft_sort(stack_a, stack_b, count, next);
-	}
-	if(count > 1)
-	{
-		temp = next;
-		two_or_three_nor(stack_a, stack_b, count);
+		first = ft_find_pivot(stack_a, stack_b, count, 1);
+		second = ft_find_pivot(stack_a, stack_b, count, 2);
+		printf("first pivot : %d\n", first);
+		printf("second pivot : %d\n", second);
+		if (is_already_sorted(*stack_a, count))
+			return ;
 		while (temp > 0)
 		{
-			push_a(stack_a, stack_b);
+			if ((stack->number) >= first)
+				rotate_a(stack_a);
+			else if (first > (stack->number) && (stack->number) >= second)
+			{
+				push_b(stack_a, stack_b);
+				next_chunk++;
+			}
+			else if (second > (stack->number))
+			{
+				push_b(stack_a, stack_b);
+				rotate_b(stack_b);
+			}
 			temp--;
+			stack = stack->next;
 		}
-		ft_sort(stack_a, stack_b, next, 0);
+		//ft_sort(stack_a, stack_b, count / 3);
 	}
 }
+
+// int		chunk_a_to_b(t_stack **stack_a, int first, int second, int count)
+// {
+// 	t_stack	*temp;
+
+// 	temp = *stack_a;
+// }
 
 void	two_or_three(t_stack **stack_a, t_stack **stack_b, int count)
 {

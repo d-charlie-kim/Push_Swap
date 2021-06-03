@@ -61,17 +61,22 @@ void	ft_lstadd(t_stack **stack, int count)
 	}
 }
 
-void	lst_to_str(int *str, t_stack **stack, int count)
+int		*lst_to_str(t_stack **stack_a, t_stack **stack_b, int count)
 {
 	t_stack	*temp;
+	int		*str;
 	int		i;
 
+	str = (int *)malloc(sizeof(int) * count);
+	if (!str)
+		ft_error("Error", *stack_a, *stack_b);
 	i = 0;
-	temp = *stack;
+	temp = *stack_a;
 	while (i < count)
 	{
 		str[i] = temp->number;
 		temp = temp->next;
 		i++;
 	}
+	return (str);
 }

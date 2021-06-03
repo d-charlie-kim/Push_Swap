@@ -18,19 +18,20 @@ void	ft_done(t_stack **stack)
 	exit(0);
 }
 
-int		is_already_sorted(t_stack *stack)
+int		is_already_sorted(t_stack *stack, int count)
 {
 	t_stack	*first;
 	t_stack	*second;
 
 	first = stack;
 	second = stack->next;
-	while (second != NULL && (first->number) < (second->number))
+	while (count > 0 && (first->number) < (second->number))
 	{
 		first = second;
 		second = first->next;
+		count--;
 	}
-	if (second == NULL)
+	if (count == 0)
 		return (1);
 	return (0);
 }
