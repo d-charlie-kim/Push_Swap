@@ -18,8 +18,6 @@ void	reverse_rotate(t_stack **stack)
 	t_stack	*first;
 	t_stack *last_before;
 
-	if (*stack != NULL)
-	{
 		first = *stack;
 		last = first->next;
 		last_before = first;
@@ -31,27 +29,38 @@ void	reverse_rotate(t_stack **stack)
 		last_before->next = NULL;
 		last->next = first;
 		*stack = last;
-	}
 }
 
 void	reverse_rotate_a(t_stack **stack_a)
 {
-	reverse_rotate(stack_a);
-	ft_putstr("rra");
+	if (((*stack_a) != NULL) && ((*stack_a)->next != NULL))
+	{
+		reverse_rotate(stack_a);
+		ft_putstr("rra");
+	}
 }
 
 void	reverse_rotate_b(t_stack **stack_b)
 {
-	reverse_rotate(stack_b);
-	ft_putstr("rrb");
+	if (((*stack_b) != NULL) && ((*stack_b)->next != NULL))
+	{
+		reverse_rotate(stack_b);
+		ft_putstr("rrb");
+	}
 }
 
 void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b)
 {
-	if (*stack_a != NULL)
-		reverse_rotate(stack_a);
-	if (*stack_b != NULL)
-		reverse_rotate(stack_b);
-	if (*stack_a != NULL || *stack_b != NULL)
-		ft_putstr("rrr");
+	if (((*stack_a) != NULL) && ((*stack_a)->next != NULL))
+	{
+		if (((*stack_b) != NULL) && ((*stack_b)->next != NULL))
+		{
+			reverse_rotate(stack_a);
+			reverse_rotate(stack_b);
+			ft_putstr("rrr");
+		}
+		reverse_rotate_a(stack_a);
+	}
+	else if (((*stack_b) != NULL) && ((*stack_b)->next != NULL))
+		reverse_rotate_b(stack_b);
 }

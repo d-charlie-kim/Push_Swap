@@ -17,7 +17,9 @@ int		find_first_pivot(int *str, int end)
 	int	i;
 	int	j;
 	int	count;
+	int	num;
 	
+	num = (end / 3);
 	i = 0;
 	while (i < end)
 	{
@@ -29,7 +31,7 @@ int		find_first_pivot(int *str, int end)
 				count++;
 			j++;
 		}
-		if (count == (end / 3) * 2)
+		if (count == num)
 			return (str[i]);
 		i++;
 	}
@@ -40,7 +42,9 @@ int		find_second_pivot(int *str, int end)
 	int	i;
 	int	j;
 	int	count;
+	int	num;
 	
+	num = ((end * 2) / 3);
 	i = 0;
 	while (i < end)
 	{
@@ -52,7 +56,7 @@ int		find_second_pivot(int *str, int end)
 				count++;
 			j++;
 		}
-		if (count == end / 3)
+		if (count == num)
 			return (str[i]);
 		i++;
 	}

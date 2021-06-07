@@ -25,13 +25,13 @@ int		is_already_sorted(t_stack *stack, int count)
 
 	first = stack;
 	second = stack->next;
-	while (count > 0 && (first->number) < (second->number))
+	while (count > 1 && (first->number) < (second->number))
 	{
 		first = second;
 		second = first->next;
 		count--;
 	}
-	if (count == 0)
+	if (count == 1)
 		return (1);
 	return (0);
 }

@@ -30,25 +30,25 @@ int	main(int argc, char **argv)
 	ft_sort(&stack_a, &stack_b, count);
 
 
-	printf ("\nstack A  //  stack B\n");
-	while (stack_a != NULL || stack_b != NULL)
-	{
-		printf("||  ");
-		if (stack_a != NULL)
-		{
-			printf("%lld", stack_a->number);
-			stack_a = stack_a->next;
-		}
-		else
-			printf(" ");
-		printf("          ");
-		if (stack_b != NULL)
-		{
-			printf("%lld", stack_b->number);
-			stack_b = stack_b->next;
-		}
-		else
-			printf(" ");
-		printf("\n");
-	}
+	// printf ("\nstack A  //  stack B\n");
+	// while (stack_a != NULL || stack_b != NULL)
+	// {
+	// 	printf("||  ");
+	// 	if (stack_a != NULL)
+	// 	{
+	// 		printf("%lld", stack_a->number);
+	// 		stack_a = stack_a->next;
+	// 	}
+	// 	else
+	// 		printf(" ");
+	// 	printf("          ");
+	// 	if (stack_b != NULL)
+	// 	{
+	// 		printf("%lld", stack_b->number);
+	// 		stack_b = stack_b->next;
+	// 	}
+	// 	else
+	// 		printf(" ");
+	// 	printf("\n");
+	// }
 }
