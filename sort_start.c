@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+int		is_all_bigger(t_stack **stack_a, t_stack **stack_b, int count, int num)
+{
+	t_stack	*temp;
+
+	temp = *stack_a;
+	while (count > 0 && temp->number >= num)
+	{
+		temp = temp->next;
+		count--;
+	}
+	if (count == 0)
+		return (1);
+	return (0);
+}
+
 void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 {
 	int		first;
@@ -36,24 +51,66 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 		{
 			if (((*stack_a)->number) >= second)
 			{
+				// if (is_all_bigger(stack_a, stack_b, temp, second))
+				// {
+				// 	first_chunk = first_chunk + temp - 1;
+				// 	break;
+				// }
 				rotate_a(stack_a);
 				first_chunk++;
 			}
-			else if (second > ((*stack_a)->number) && ((*stack_a)->number) >= first)
-			{
-				push_b(stack_a, stack_b);
-				second_chunk++;
-			}
-			else if (first > ((*stack_a)->number))
+			else if (second > ((*stack_a)->number) && ((*stack_a)->number) > first)
 			{
 				push_b(stack_a, stack_b);
 				rotate_b(stack_b);
+				second_chunk++;
+			}
+			else if (first >= ((*stack_a)->number))
+			{
+				push_b(stack_a, stack_b);
 			}
 			temp--;
 		}
-		temp = first_chunk + 1;
-		while (--temp > 0)
+		temp = first_chunk;
+		while (temp > 0)
+		{
 			reverse_rotate_a(stack_a);
+			temp--;
+		}
+		temp = second_chunk;
+		while (temp > 0)
+		{
+			reverse_rotate_b(stack_b);
+			temp--;
+		}
+
+		// t_stack *aaa;
+		// t_stack	*bbb;
+		// aaa = *stack_a;
+		// bbb = *stack_b;
+		// 	printf ("\nstack A  //  stack B\n");
+		// while (aaa != NULL || bbb != NULL)
+		// {
+		// 	printf("||  ");
+		// 	if (aaa != NULL)
+		// 	{
+		// 		printf("%lld", aaa->number);
+		// 		aaa = aaa->next;
+		// 	}
+		// 	else
+		// 		printf(" ");
+		// 	printf("          ");
+		// 	if (bbb != NULL)
+		// 	{
+		// 		printf("%lld", bbb->number);
+		// 		bbb = bbb->next;
+		// 	}
+		// 	else
+		// 		printf(" ");
+		// 	printf("\n");
+		// }
+
+
 		ft_sort(stack_a, stack_b, first_chunk);
 	}
 	if (count < 4)

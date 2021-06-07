@@ -67,6 +67,7 @@ void	rotate_b(t_stack **stack_b);
 void	rotate_both(t_stack **stack_a, t_stack **stack_b);
 
 void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count);
+int		is_all_bigger(t_stack **stack_a, t_stack **stack_b, int count, int num);
 
 int		ft_find_pivot(t_stack **stack_a, t_stack **stack_b, int count, int order);
 int		find_second_pivot(int *str, int end);
