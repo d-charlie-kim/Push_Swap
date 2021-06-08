@@ -68,12 +68,12 @@ void	rotate_both(t_stack **stack_a, t_stack **stack_b);
 
 void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count);
 int		is_all_bigger(t_stack **stack_a, t_stack **stack_b, int count, int num);
+void	chunk_b_to_a(t_stack **stack_a, t_stack **stack_b, int count);
 
 int		ft_find_pivot(t_stack **stack_a, t_stack **stack_b, int count, int order);
 int		find_second_pivot(int *str, int end);
 int		find_first_pivot(int *str, int end);
 
-void	two_or_three(t_stack **stack_a, t_stack **stack_b, int count);
 void	two_arg(t_stack **stack_a, t_stack **stack_b);
 void	three_arg(t_stack **stack_a, t_stack **stack_b);
 void	two_one_three(t_stack **stack_a, t_stack **stack_b);
@@ -82,7 +82,7 @@ void	one_three_two(t_stack **stack_a, t_stack **stack_b);
 void	three_two_one(t_stack **stack_a, t_stack **stack_b);
 void	three_one_two(t_stack **stack_a, t_stack **stack_b);
 
-void	two_or_three_nor(t_stack **stack_a, t_stack **stack_b, int count);
+void	two_or_three(t_stack **stack_a, t_stack **stack_b, int count);
 void	three_arg_nor(t_stack **stack_a, t_stack **stack_b);
 void	two_one_three_nor(t_stack **stack_a, t_stack **stack_b);
 void	two_three_one_nor(t_stack **stack_a, t_stack **stack_b);

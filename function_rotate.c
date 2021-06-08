@@ -56,7 +56,8 @@ void	rotate_both(t_stack **stack_a, t_stack **stack_b)
 			ft_rotate(stack_b);
 			ft_putstr("rr");
 		}
-		rotate_a(stack_a);
+		else
+			rotate_a(stack_a);
 	}
 	else if (((*stack_b) != NULL) && ((*stack_b)->next != NULL))
 		rotate_b(stack_b);

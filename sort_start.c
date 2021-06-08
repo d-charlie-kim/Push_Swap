@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+void	reverse_together(t_stack **stack_a, t_stack **stack_b, int num1, int num2)
+{
+	while (num1 > 0 && num2 > 0)
+	{
+		reverse_rotate_both(stack_a, stack_b);
+		num1--;
+		num2--;
+	}
+	while (num1 > 0)
+	{
+		reverse_rotate_a(stack_a);
+		num1--;
+	}
+	while (num2 > 0)
+	{
+		reverse_rotate_b(stack_b);
+		num2--;
+	}
+}
+
 int		is_all_bigger(t_stack **stack_a, t_stack **stack_b, int count, int num)
 {
 	t_stack	*temp;
@@ -34,17 +54,16 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 	int		temp;
 	int		first_chunk;
 	int		second_chunk;
+	int		last_chunk;
 	
 	temp = count;
 	first_chunk = 0;
 	second_chunk = 0;
+	last_chunk = 0;
 	if (count > 3)
 	{
 		first = ft_find_pivot(stack_a, stack_b, count, 1);
 		second = ft_find_pivot(stack_a, stack_b, count, 2);
-		// printf("count : %d\n", count);
-		// printf("first pivot : %d\n", first);
-		// printf("second pivot : %d\n", second);
 		if (is_already_sorted(*stack_a, count))
 			return ;
 		while (temp > 0)
@@ -68,21 +87,98 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 			else if (first >= ((*stack_a)->number))
 			{
 				push_b(stack_a, stack_b);
+				last_chunk++;
 			}
 			temp--;
 		}
-		temp = first_chunk;
+		reverse_together(stack_a, stack_b, first_chunk, second_chunk);
+		ft_sort(stack_a, stack_b, first_chunk);
+		chunk_b_to_a(stack_a, stack_b, second_chunk);
+		chunk_b_to_a(stack_a, stack_b, last_chunk);
+	}
+	if (count < 4)
+	{
+		two_or_three(stack_a, stack_b, count);
+		return ;
+	}
+}
+
+void	chunk_b_to_a(t_stack **stack_a, t_stack **stack_b, int count)
+{
+	int		first;
+	int		second;
+	int		temp;
+	int		first_chunk;
+	int		second_chunk;
+	int		last_chunk;
+	
+	temp = count;
+	first_chunk = 0;
+	second_chunk = 0;
+	last_chunk = 0;
+	if (count > 3)
+	{
+		first = ft_find_pivot(stack_b, stack_a, count, 1);
+		second = ft_find_pivot(stack_b, stack_a, count, 2);
 		while (temp > 0)
 		{
-			reverse_rotate_a(stack_a);
+			if (((*stack_b)->number) <= first)
+			{
+				rotate_b(stack_b);
+				last_chunk++;
+			}
+			else if (second > ((*stack_b)->number) && ((*stack_b)->number) > first)
+			{
+				push_a(stack_a, stack_b);
+				rotate_a(stack_a);
+				second_chunk++;
+			}
+			else if (second <= ((*stack_b)->number))
+			{
+				push_a(stack_a, stack_b);
+				first_chunk++;
+			}
 			temp--;
 		}
-		temp = second_chunk;
+		ft_sort(stack_a, stack_b, first_chunk);
+		reverse_together(stack_a, stack_b, second_chunk, last_chunk);
+		ft_sort(stack_a, stack_b, second_chunk);
+		chunk_b_to_a(stack_a, stack_b, last_chunk);
+	}
+	if (count < 4)
+	{
+		temp = count;
 		while (temp > 0)
 		{
-			reverse_rotate_b(stack_b);
+			push_a(stack_a, stack_b);
 			temp--;
 		}
+		two_or_three(stack_a, stack_b, count);
+		return ;
+	}
+}
+
+void	two_or_three(t_stack **stack_a, t_stack **stack_b, int count)
+{
+	int		i;
+	int		num;
+	t_stack	*temp;
+
+	i = 0;
+	num = 3;
+	temp = *stack_a;
+	while (num > 0 && temp != NULL)
+	{
+		temp = temp->next;
+		num--;
+	}
+	if (count == 2)
+		two_arg(stack_a, stack_b);
+	if (count == 3 && temp == NULL)
+		return(three_arg(stack_a, stack_b));
+	else if (count == 3)
+		three_arg_nor(stack_a, stack_b);
+}
 
 		// t_stack *aaa;
 		// t_stack	*bbb;
@@ -109,70 +205,3 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 		// 		printf(" ");
 		// 	printf("\n");
 		// }
-
-
-		ft_sort(stack_a, stack_b, first_chunk);
-	}
-	if (count < 4)
-		two_or_three_nor(stack_a, stack_b, count);
-	temp = second_chunk;
-	if (count > 3 && temp > 0)
-	{
-		while (temp > 0)
-		{
-			push_a(stack_a, stack_b);
-			temp--;
-		}
-		ft_sort(stack_a, stack_b, second_chunk);
-	}
-	temp = count - first_chunk - second_chunk;
-	if (count > 3 && temp > 0)
-	{
-		while (temp > 0)
-		{
-			push_a(stack_a, stack_b);
-			temp--;
-		}
-		ft_sort(stack_a, stack_b, count - first_chunk - second_chunk);
-	}
-}
-
-// int		chunk_a_to_b(t_stack **stack_a, int first, int second, int count)
-// {
-// 	t_stack	*temp;
-
-// 	temp = *stack_a;
-// }
-
-void	two_or_three(t_stack **stack_a, t_stack **stack_b, int count)
-{
-	int	i;
-
-	i = 0;
-	if (count == 2)
-		two_arg(stack_a, stack_b);
-	else if (count == 3)
-		three_arg(stack_a, stack_b);
-}
-
-void	two_or_three_nor(t_stack **stack_a, t_stack **stack_b, int count)
-{
-	int		i;
-	int		num;
-	t_stack	*temp;
-
-	i = 0;
-	num = 3;
-	temp = *stack_a;
-	while (num > 0 && temp != NULL)
-	{
-		temp = temp->next;
-		num--;
-	}
-	if (temp == NULL)
-		return(two_or_three(stack_a, stack_b, count));
-	if (count == 2)
-		two_arg(stack_a, stack_b);
-	else if (count == 3)
-		three_arg_nor(stack_a, stack_b);
-}
