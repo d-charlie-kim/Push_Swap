@@ -64,17 +64,12 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b, int count)
 	{
 		first = ft_find_pivot(stack_a, stack_b, count, 1);
 		second = ft_find_pivot(stack_a, stack_b, count, 2);
-		if (is_already_sorted(*stack_a, count))
+		if (is_already_sorted(*stack_a, count, 'a'))
 			return ;
 		while (temp > 0)
 		{
 			if (((*stack_a)->number) >= second)
 			{
-				// if (is_all_bigger(stack_a, stack_b, temp, second))
-				// {
-				// 	first_chunk = first_chunk + temp - 1;
-				// 	break;
-				// }
 				rotate_a(stack_a);
 				first_chunk++;
 			}
@@ -120,6 +115,8 @@ void	chunk_b_to_a(t_stack **stack_a, t_stack **stack_b, int count)
 	{
 		first = ft_find_pivot(stack_b, stack_a, count, 1);
 		second = ft_find_pivot(stack_b, stack_a, count, 2);
+		if (is_already_sorted(*stack_a, count, 'b'))
+			return ;
 		while (temp > 0)
 		{
 			if (((*stack_b)->number) <= first)
@@ -179,29 +176,3 @@ void	two_or_three(t_stack **stack_a, t_stack **stack_b, int count)
 	else if (count == 3)
 		three_arg_nor(stack_a, stack_b);
 }
-
-		// t_stack *aaa;
-		// t_stack	*bbb;
-		// aaa = *stack_a;
-		// bbb = *stack_b;
-		// 	printf ("\nstack A  //  stack B\n");
-		// while (aaa != NULL || bbb != NULL)
-		// {
-		// 	printf("||  ");
-		// 	if (aaa != NULL)
-		// 	{
-		// 		printf("%lld", aaa->number);
-		// 		aaa = aaa->next;
-		// 	}
-		// 	else
-		// 		printf(" ");
-		// 	printf("          ");
-		// 	if (bbb != NULL)
-		// 	{
-		// 		printf("%lld", bbb->number);
-		// 		bbb = bbb->next;
-		// 	}
-		// 	else
-		// 		printf(" ");
-		// 	printf("\n");
-		// }

@@ -29,7 +29,7 @@ int		*lst_to_str(t_stack **stack_a, t_stack **stack_b, int count);
 void	ft_find_node(t_stack **temp, int count);
 
 void	ft_done(t_stack **stack);
-int		is_already_sorted(t_stack *stack, int count);
+int		is_already_sorted(t_stack *stack, int count, char c);
 void	ft_error(char *str, t_stack *stack_a, t_stack *stack_b);
 
 int		arg_count(char **argv, int count);
