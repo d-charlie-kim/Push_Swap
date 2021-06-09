@@ -53,6 +53,7 @@ void	swap_a(t_stack **stack_a);
 void	swap_b(t_stack **stack_b);
 void	swap_both(t_stack **stack_a, t_stack **stack_b);
 
+void	ft_push(t_stack **stack_from, t_stack **stack_to);
 void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
 
@@ -89,5 +90,9 @@ void	two_three_one_nor(t_stack **stack_a, t_stack **stack_b);
 void	one_three_two_nor(t_stack **stack_a, t_stack **stack_b);
 void	three_two_one_nor(t_stack **stack_a, t_stack **stack_b);
 void	three_one_two_nor(t_stack **stack_a, t_stack **stack_b);
+
+// int	checker(int argc, char **argv);
+int	ft_strnstr(char *str, char *arr, int n);
+
 
 #endif
