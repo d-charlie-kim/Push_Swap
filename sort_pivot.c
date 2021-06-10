@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_quick.c                                       :+:      :+:    :+:   */
+/*   sort_pivot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 20:16:31 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/20 20:16:32 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:48:00 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		find_first_pivot(int *str, int end)
 	int	j;
 	int	count;
 	int	num;
-	
+
 	num = (end / 3);
 	i = 0;
 	while (i < end)
@@ -37,13 +37,14 @@ int		find_first_pivot(int *str, int end)
 	}
 	return (str[i]);
 }
+
 int		find_second_pivot(int *str, int end)
 {
 	int	i;
 	int	j;
 	int	count;
 	int	num;
-	
+
 	num = ((end * 2) / 3);
 	i = 0;
 	while (i < end)
@@ -63,7 +64,8 @@ int		find_second_pivot(int *str, int end)
 	return (str[i]);
 }
 
-int		ft_find_pivot(t_stack **stack_a, t_stack **stack_b, int count, int order)
+int		ft_find_pivot(t_stack **stack_a, t_stack **stack_b,
+											int count, int order)
 {
 	int pivot;
 	int *str;

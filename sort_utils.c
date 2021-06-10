@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_count.c                                        :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/22 02:15:24 by dokkim            #+#    #+#             */
-/*   Updated: 2021/06/10 16:04:10 by dokkim           ###   ########.fr       */
+/*   Created: 2021/06/10 16:17:49 by dokkim            #+#    #+#             */
+/*   Updated: 2021/06/10 16:18:16 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		arg_count(char **argv, int count)
+void	reverse_together(t_stack **stack_a, t_stack **stack_b,
+												int num1, int num2)
 {
-	int	i;
-	int	j;
-	int valid;
-
-	i = 1;
-	count = 0;
-	while (argv[i])
+	while (num1 > 0 && num2 > 0)
 	{
-		valid = count;
-		j = 0;
-		while (argv[i][j])
-		{
-			while ((argv[i][j] < 48 || argv[i][j] > 57) && argv[i][j])
-				j++;
-			if (argv[i][j])
-				count++;
-			while (argv[i][j] >= 48 && argv[i][j] <= 57 && argv[i][j])
-				j++;
-		}
-		i++;
-		if (valid == count)
-			ft_error("Error", NULL, NULL);
+		reverse_rotate_both(stack_a, stack_b);
+		num1--;
+		num2--;
 	}
-	return (count);
+	while (num1 > 0)
+	{
+		reverse_rotate_a(stack_a);
+		num1--;
+	}
+	while (num2 > 0)
+	{
+		reverse_rotate_b(stack_b);
+		num2--;
+	}
 }

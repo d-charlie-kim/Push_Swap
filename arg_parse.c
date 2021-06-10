@@ -6,11 +6,24 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 21:53:57 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/20 20:18:38 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:53:55 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		parsing(t_stack **stack_a, t_stack **stack_b, int argc, char **argv)
+{
+	int	count;
+
+	count = 0;
+	arg_check(argc, argv);
+	count = arg_count(argv, count);
+	ft_lstadd(stack_a, count);
+	ft_parse(argv, stack_a, count);
+	duplicate_check(*stack_a);
+	return (count);
+}
 
 void	ft_parse(char **argv, t_stack **stack_a, int max)
 {

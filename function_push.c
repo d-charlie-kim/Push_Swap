@@ -16,30 +16,27 @@ void	ft_push(t_stack **stack_from, t_stack **stack_to)
 {
 	t_stack *temp;
 
-	temp = (*stack_from)->next;
-	(*stack_from)->next = (*stack_to);
-	(*stack_to) = (*stack_from);
-	(*stack_from) = temp;
+	if ((*stack_from) != NULL)
+	{
+		temp = (*stack_from)->next;
+		(*stack_from)->next = (*stack_to);
+		(*stack_to) = (*stack_from);
+		(*stack_from) = temp;
+	}
 }
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
 
-	if ((*stack_b) != NULL)
-	{
-		ft_push(stack_b, stack_a);
-		ft_putstr("pa");
-	}
+	ft_push(stack_b, stack_a);
+	ft_putstr("pa");
 }
 
 void	push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
 
-	if ((*stack_a) != NULL)
-	{
-		ft_push(stack_a, stack_b);
-		ft_putstr("pb");
-	}
+	ft_push(stack_a, stack_b);
+	ft_putstr("pb");
 }

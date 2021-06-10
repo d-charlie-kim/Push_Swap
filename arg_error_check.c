@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 21:50:25 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/20 20:18:35 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:50:33 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	arg_check(int argc, char **argv)
 		len_check(argv, count);
 	}
 	else
-		exit (0);
+	{
+		ft_putstr("Error");
+		exit(0);
+	}
 }
 
 void	duplicate_check(t_stack *stack)
@@ -76,9 +79,8 @@ void	len_check(char **argv, int count)
 	int	i;
 	int	j;
 
-	i = 1;
-	j = 0;
-	while (argv[i])
+	i = 0;
+	while (argv[++i])
 	{
 		j = 0;
 		while (argv[i][j])
@@ -98,6 +100,5 @@ void	len_check(char **argv, int count)
 			if (count >= 11)
 				ft_error("Error", NULL, NULL);
 		}
-		i++;
 	}
 }

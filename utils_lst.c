@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:06:29 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/20 18:07:57 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:53:43 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,17 @@ int		*lst_to_str(t_stack **stack_a, t_stack **stack_b, int count)
 		i++;
 	}
 	return (str);
+}
+
+int		ft_lstsize(t_stack *stack)
+{
+	int	n;
+
+	n = 0;
+	while (stack != NULL)
+	{
+		stack = stack->next;
+		n++;
+	}
+	return (n);
 }

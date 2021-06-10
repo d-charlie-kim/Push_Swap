@@ -12,43 +12,17 @@
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		count;
 
+	count = 0;
 	stack_a = NULL;
 	stack_b = NULL;
-	arg_check(argc, argv);
-	count = arg_count(argv, count);
-	ft_lstadd(&stack_a, count);
-	ft_parse(argv, &stack_a, count);
-	duplicate_check(stack_a);
+	count = parsing(&stack_a, &stack_b, argc, argv);
 	if (is_already_sorted(stack_a, count, 'a'))
 		ft_done(&stack_a);
-	ft_sort(&stack_a, &stack_b, count);
-
-
-	// printf ("\nstack A  //  stack B\n");
-	// while (stack_a != NULL || stack_b != NULL)
-	// {
-	// 	printf("||  ");
-	// 	if (stack_a != NULL)
-	// 	{
-	// 		printf("%lld", stack_a->number);
-	// 		stack_a = stack_a->next;
-	// 	}
-	// 	else
-	// 		printf(" ");
-	// 	printf("          ");
-	// 	if (stack_b != NULL)
-	// 	{
-	// 		printf("%lld", stack_b->number);
-	// 		stack_b = stack_b->next;
-	// 	}
-	// 	else
-	// 		printf(" ");
-	// 	printf("\n");
-	// }
+	chunk_a_to_b(&stack_a, &stack_b, count);
 }

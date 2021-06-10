@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   utils_error_or_done.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 17:51:33 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/21 17:51:49 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/10 16:03:17 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,38 @@ void	ft_done(t_stack **stack)
 	exit(0);
 }
 
+int		sorted_a_stack(t_stack *stack, int count)
+{
+	t_stack	*first;
+	t_stack	*second;
+
+	first = stack;
+	second = stack->next;
+	while (count > 1 && (first->number) < (second->number))
+	{
+		first = second;
+		second = first->next;
+		count--;
+	}
+	return (count);
+}
+
+int		sorted_b_stack(t_stack *stack, int count)
+{
+	t_stack	*first;
+	t_stack	*second;
+
+	first = stack;
+	second = stack->next;
+	while (count-- > 1 && (first->number) > (second->number))
+	{
+		first = second;
+		second = first->next;
+		count--;
+	}
+	return (count);
+}
+
 int		is_already_sorted(t_stack *stack, int count, char c)
 {
 	t_stack	*first;
@@ -26,23 +58,9 @@ int		is_already_sorted(t_stack *stack, int count, char c)
 	first = stack;
 	second = stack->next;
 	if (c == 'a')
-	{
-		while (count > 1 && (first->number) < (second->number))
-		{
-			first = second;
-			second = first->next;
-			count--;
-		}
-	}
+		count = sorted_a_stack(stack, count);
 	else if (c == 'b')
-	{
-		while (count-- > 1 && (first->number) > (second->number))
-		{
-			first = second;
-			second = first->next;
-			count--;
-		}
-	}
+		count = sorted_b_stack(stack, count);
 	if (count == 1)
 		return (1);
 	return (0);
