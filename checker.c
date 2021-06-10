@@ -16,15 +16,15 @@ void	is_sorted(t_stack **stack_a, t_stack **stack_b, int count)
 {
 	if (is_already_sorted(*stack_a, count, 'a'))
 	{
-		ft_lstclear(stack_a);
-		ft_lstclear(stack_b);
+		ft_lstclear(*stack_a);
+		ft_lstclear(*stack_b);
 		ft_putstr("OK");
 		exit(0);
 	}
 	else
 	{
-		ft_lstclear(stack_a);
-		ft_lstclear(stack_b);
+		ft_lstclear(*stack_a);
+		ft_lstclear(*stack_b);
 		ft_putstr("KO");
 		exit(0);
 	}
@@ -50,44 +50,44 @@ int		ft_strnstr(char *str, char *arr, int n)
 void	swap_or_push(t_stack **stack_a, t_stack **stack_b, char *buffer)
 {
 	if (ft_strnstr(buffer, "sa", 2))
-		ft_swap(&stack_a);
+		ft_swap(stack_a);
 	else if (ft_strnstr(buffer, "sb", 2))
-		ft_swap(&stack_b);
+		ft_swap(stack_b);
 	else if (ft_strnstr(buffer, "ss", 2))
 	{
-		ft_swap(&stack_a);
-		ft_swap(&stack_b);
+		ft_swap(stack_a);
+		ft_swap(stack_b);
 	}
 	else if (ft_strnstr(buffer, "pa", 2))
-		ft_push(&stack_b, &stack_a);
+		ft_push(stack_b, stack_a);
 	else if (ft_strnstr(buffer, "pb", 2))
-		ft_push(&stack_a, &stack_b);
+		ft_push(stack_a, stack_b);
 	else
-		ft_error("Error", stack_a, stack_b);
+		ft_error("Error", *stack_a, *stack_b);
 }
 
 void	rotate_or_reverse(t_stack **stack_a, t_stack **stack_b, char *buffer)
 {
 	if (ft_strnstr(buffer, "ra", 2))
-		ft_rotate(&stack_a);
+		ft_rotate(stack_a);
 	else if (ft_strnstr(buffer, "rb", 2))
-		ft_rotate(&stack_b);
+		ft_rotate(stack_b);
 	else if (ft_strnstr(buffer, "rr", 2))
 	{
-		ft_rotate(&stack_a);
-		ft_rotate(&stack_b);
+		ft_rotate(stack_a);
+		ft_rotate(stack_b);
 	}
 	else if (ft_strnstr(buffer, "rra", 3))
-		reverse_rotate(&stack_a);
+		reverse_rotate(stack_a);
 	else if (ft_strnstr(buffer, "rrb", 3))
-		reverse_rotate(&stack_b);
+		reverse_rotate(stack_b);
 	else if (ft_strnstr(buffer, "rrr", 3))
 	{
-		reverse_rotate(&stack_a);
-		reverse_rotate(&stack_b);
+		reverse_rotate(stack_a);
+		reverse_rotate(stack_b);
 	}
 	else
-		ft_error("Error", stack_a, stack_b);
+		ft_error("Error", *stack_a, *stack_b);
 }
 
 int		main(int argc, char **argv)
@@ -113,5 +113,5 @@ int		main(int argc, char **argv)
 	size = ft_lstsize(stack_a);
 	if (size != count)
 		ft_error("KO", stack_a, stack_b);
-	is_sorted(stack_a, stack_b, count);
+	is_sorted(&stack_a, &stack_b, count);
 }
