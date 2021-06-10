@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 03:25:59 by dokkim            #+#    #+#             */
-/*   Updated: 2021/06/10 17:01:05 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/10 17:08:08 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 t_chunks	cycle_a_to_b(t_stack **stack_a, t_stack **stack_b,
 										int count, t_chunks chunks)
 {
+	chunks.first_chunk = 0;
+	chunks.second_chunk = 0;
+	chunks.last_chunk = 0;
 	while (count > 0)
 	{
 		if (((*stack_a)->number) >= chunks.second)
@@ -43,9 +46,6 @@ void		chunk_a_to_b(t_stack **stack_a, t_stack **stack_b, int count)
 {
 	t_chunks	chunks;
 
-	chunks.first_chunk = 0;
-	chunks.second_chunk = 0;
-	chunks.last_chunk = 0;
 	if (count > 3)
 	{
 		chunks.first = ft_find_pivot(stack_a, stack_b, count, 1);
@@ -69,6 +69,9 @@ void		chunk_a_to_b(t_stack **stack_a, t_stack **stack_b, int count)
 t_chunks	cycle_b_to_a(t_stack **stack_a, t_stack **stack_b,
 										int count, t_chunks chunks)
 {
+	chunks.first_chunk = 0;
+	chunks.second_chunk = 0;
+	chunks.last_chunk = 0;
 	while (count > 0)
 	{
 		if (((*stack_b)->number) <= chunks.first)
@@ -98,9 +101,6 @@ void		chunk_b_to_a(t_stack **stack_a, t_stack **stack_b, int count)
 	int			temp;
 	t_chunks	chunks;
 
-	chunks.first_chunk = 0;
-	chunks.second_chunk = 0;
-	chunks.last_chunk = 0;
 	if (count > 3)
 	{
 		chunks.first = ft_find_pivot(stack_b, stack_a, count, 1);
@@ -116,12 +116,9 @@ void		chunk_b_to_a(t_stack **stack_a, t_stack **stack_b, int count)
 	}
 	if (count < 4)
 	{
-		temp = count;
-		while (temp > 0)
-		{
+		temp = count + 1;
+		while (--temp > 0)
 			push_a(stack_a, stack_b);
-			temp--;
-		}
 		two_or_three(stack_a, stack_b, count);
 		return ;
 	}
