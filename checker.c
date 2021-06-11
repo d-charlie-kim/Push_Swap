@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 01:42:03 by dokkim            #+#    #+#             */
-/*   Updated: 2021/06/10 15:53:23 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/11 18:18:30 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ft_strnstr(char *str, char *arr, int n)
 		i++;
 		n--;
 	}
-	if (str[i] != '\n')
+	if (str[i] != '\0' || n > 0)
 		return (0);
 	return (1);
 }
@@ -63,7 +63,7 @@ void	swap_or_push(t_stack **stack_a, t_stack **stack_b, char *buffer)
 	else if (ft_strnstr(buffer, "pb", 2))
 		ft_push(stack_a, stack_b);
 	else
-		ft_error("Error", *stack_a, *stack_b);
+		rotate_or_reverse(stack_a, stack_b, buffer);
 }
 
 void	rotate_or_reverse(t_stack **stack_a, t_stack **stack_b, char *buffer)
@@ -95,23 +95,24 @@ int		main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		count;
-	char	buffer[4];
-	int		size;
+	t_gnl	gnl;
+	int		temp;
 
+	gnl.backup = NULL;
+	gnl.buffer = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	count = parsing(&stack_a, &stack_b, argc, argv);
-	size = read(0, buffer, 4);
-	while (size > 0)
+	gnl.size = get_next_line(0, &(gnl.buffer), &(gnl.backup));
+	while (gnl.size == 1)
 	{
-		if (buffer[0] == 's' || buffer[0] == 'p')
-			swap_or_push(&stack_a, &stack_b, buffer);
-		else if (buffer[0] == 'r')
-			rotate_or_reverse(&stack_a, &stack_b, buffer);
-		else
-			ft_error("Error", stack_a, stack_b);
-		size = read(0, buffer, 4);
+		swap_or_push(&stack_a, &stack_b, gnl.buffer);
+		gnl.size = get_next_line(0, &(gnl.buffer), &(gnl.backup));
 	}
-	size = ft_lstsize(stack_a);
-	if (size != count)
+	if (gnl.size == -1)
+		ft_error("Error", stack_a, stack_b);
+	temp = ft_lstsize(stack_a);
+	if (temp != count)
 		ft_error("KO", stack_a, stack_b);
 	is_sorted(&stack_a, &stack_b, count);
 }

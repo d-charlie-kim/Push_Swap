@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 20:01:41 by dokkim            #+#    #+#             */
-/*   Updated: 2021/06/10 15:45:20 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/11 18:18:20 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct	s_chunks
 	int				second;
 }				t_chunks;
 
+typedef struct	s_gnl
+{
+	char			*buffer;
+	int				size;
+	char			*backup;
+}				t_gnl;
 
 int				arg_count(char **argv, int count);
 
@@ -112,10 +118,22 @@ void			one_three_two_nor(t_stack **stack_a, t_stack **stack_b);
 void			three_two_one_nor(t_stack **stack_a, t_stack **stack_b);
 void			three_one_two_nor(t_stack **stack_a, t_stack **stack_b);
 
-int		find_median(int *str, int count);
-void	sort_around_five(t_stack **stack_a, t_stack **stack_b, int count);
-void	sort_four_or_five(t_stack **stack_a, t_stack **stack_b, int count);
+int				find_median(int *str, int count);
+void			sort_around_five(t_stack **stack_a, t_stack **stack_b, int count);
+void			sort_four_or_five(t_stack **stack_a, t_stack **stack_b, int count);
 
 int				ft_strnstr(char *str, char *arr, int n);
+void			rotate_or_reverse(t_stack **stack_a, t_stack **stack_b, char *buffer);
+void			swap_or_push(t_stack **stack_a, t_stack **stack_b, char *buffer);
+void			is_sorted(t_stack **stack_a, t_stack **stack_b, int count);
+
+int				get_next_line(int fd, char **line, char **save);
+int				ft_save(char **line, char **save);
+void			ft_repeat(char **temp, char **save, char *buffer, ssize_t size);
+int				ft_return_zero(char **line, char **save, char *buffer, ssize_t size);
+int				ft_return_one(char **line, char **save, char *buffer, ssize_t size);
+int				ft_strlen(char *str);
+void			ft_memcpy(char *dst, char *src, ssize_t n);
+int				ft_check(char *str, ssize_t size);
 
 #endif

@@ -1,76 +1,75 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/06/11 01:25:29 by dokkim            #+#    #+#              #
-#    Updated: 2021/06/11 01:25:30 by dokkim           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = push_swap
+BONUS_NAME = checker
 
 CC = gcc
-NAME = push_swap
-# NAME_BONUS = checker
+CFLAGS = -Wall -Wextra -Werror
 
-SRCS = push_swap.c \
-		arg_count.c \
-		arg_error_check.c \
-		arg_parse.c \
-		function_push.c \
-		function_reverse_rotate.c \
-		function_rotate.c \
-		function_swap.c \
-		sort_chunks.c \
-		sort_pivot.c \
-		sort_three_nor.c \
-		sort_three.c \
-		sort_two_or_three.c \
-		sort_utils.c \
-		utils_error_or_done.c \
-		utils_lst.c \
-		utils.c \
+# LIBFLAGS = -L ./include/libft -lft
+
+SRCS_PARSE = $(addprefix ./parsing/, \
+			 parsing.c \
+			 validate.c \
+			 linked_list.c \
+			 )
+
+SRCS_OPERATION = $(addprefix ./operation/, \
+				 swap.c \
+				 push.c \
+				 rotate.c \
+				 reverse_rotate.c \
+			 	 )
+
+SRCS_SORT = $(addprefix ./sort/, \
+			sort.c \
+			sort_2_to_3.c \
+			sort_4_to_5.c \
+			recursive.c \
+			recursive_util.c \
+			)
+
+SRCS_CHECKER = $(addprefix ./check/, \
+			   check.c \
+			   )
+
+SRCS_GNL = $(addprefix ./include/get_next_line/, \
+		   get_next_line.c \
+	   	   get_next_line_utils.c \
+		   )
+
+SRCS = ./parsing/push_swap.c \
+	   $(SRCS_PARSE) \
+	   $(SRCS_OPERATION) \
+   	   $(SRCS_SORT) \
+   	   $(SRCS_CHECKER) \
+
+BONUS_SRCS = ./check/checker_main.c \
+			 $(SRCS_PARSE) \
+			 $(SRCS_GNL) \
+			 $(SRCS_OPERATION) \
+			 $(SRCS_CHECKER) \
 
 OBJS = $(SRCS:.c=.o)
 
-# SRCS_BONUS = checker.c \
-# 		arg_count.c \
-# 		arg_error_check.c \
-# 		arg_parse.c \
-# 		function_push.c \
-# 		function_reverse_rotate.c \
-# 		function_rotate.c \
-# 		function_swap.c \
-# 		sort_chunks.c \
-# 		sort_pivot.c \
-# 		sort_three_nor.c \
-# 		sort_three.c \
-# 		sort_two_or_three.c \
-# 		sort_utils.c \
-# 		utils_error_or_done.c \
-# 		utils_lst.c \
-# 		utils.c \
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-# OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+$(NAME) : $(OBJS)
+	# make -C ./include/libft
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
 
-.c.o : 
-	$(CC) $(CFLAGS) -c -o $@ $<
+$(BONUS_NAME) : $(BONUS_OBJS)
+	# make -C ./include/libft
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFLAGS) -o $(BONUS_NAME)
 
 all : $(NAME)
-$(NAME) : $(OBJS)
-		ar -rcs $@ $^
 
-
-clean : 
-		rm -rf $(OBJS) $(OBJS_BONUS)
+clean :
+	# make -C ./include/libft clean
+	rm -rf $(OBJS) $(BONUS_OBJS)
 
 fclean : clean
-		rm -rf $(NAME) $(NAME_BONUS)
+	# make -C ./include/libft fclean
+	rm -rf $(NAME) $(BONUS_NAME)
+
+bonus : all $(BONUS_NAME)
 
 re : fclean all
-
-# bonus : $(OBJS) $(OBJS_BONUS)
-# 		ar rc $(NAME) $(NAME_BONUS) $(OBJS) $(OBJS_BONUS)
-
-.PHONY : bonus all clean fclean re

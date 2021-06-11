@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 20:14:01 by dokkim            #+#    #+#             */
-/*   Updated: 2021/05/20 20:17:25 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/11 18:12:09 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	swap_b(t_stack **stack_a, t_stack **stack_b)
 
 void	swap_both(t_stack **stack_a, t_stack **stack_b)
 {
-		ft_swap(stack_a);
-		ft_swap(stack_b);
-		ft_putstr("ss");
+	ft_swap(stack_a);
+	ft_swap(stack_b);
+	ft_putstr("ss");
 }
