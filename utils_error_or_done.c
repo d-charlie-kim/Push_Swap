@@ -12,9 +12,10 @@
 
 #include "push_swap.h"
 
-void	ft_done(t_stack **stack)
+void	ft_done(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_lstclear(*stack);
+	ft_lstclear(*stack_a);
+	ft_lstclear(*stack_b);
 	exit(0);
 }
 

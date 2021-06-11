@@ -14,37 +14,37 @@
 
 void	two_one_three_nor(t_stack **stack_a, t_stack **stack_b)
 {
-	swap_a(stack_a);
+	swap_a(stack_a, stack_b);
 }
 
 void	two_three_one_nor(t_stack **stack_a, t_stack **stack_b)
 {
 	push_b(stack_a, stack_b);
-	swap_a(stack_a);
+	swap_a(stack_a, stack_b);
 	push_a(stack_a, stack_b);
-	swap_a(stack_a);
+	swap_a(stack_a, stack_b);
 }
 
 void	one_three_two_nor(t_stack **stack_a, t_stack **stack_b)
 {
 	push_b(stack_a, stack_b);
-	swap_a(stack_a);
+	swap_a(stack_a, stack_b);
 	push_a(stack_a, stack_b);
 }
 
 void	three_two_one_nor(t_stack **stack_a, t_stack **stack_b)
 {
-	swap_a(stack_a);
+	swap_a(stack_a, stack_b);
 	push_b(stack_a, stack_b);
-	swap_a(stack_a);
+	swap_a(stack_a, stack_b);
 	push_a(stack_a, stack_b);
-	swap_a(stack_a);
+	swap_a(stack_a, stack_b);
 }
 
 void	three_one_two_nor(t_stack **stack_a, t_stack **stack_b)
 {
-	swap_a(stack_a);
+	swap_a(stack_a, stack_b);
 	push_b(stack_a, stack_b);
-	swap_a(stack_a);
+	swap_a(stack_a, stack_b);
 	push_a(stack_a, stack_b);
 }

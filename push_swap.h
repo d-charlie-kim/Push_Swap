@@ -50,7 +50,7 @@ void			ft_lstadd(t_stack **stack, int count);
 int				*lst_to_str(t_stack **stack_a, t_stack **stack_b, int count);
 int				ft_lstsize(t_stack *stack);
 
-void			ft_done(t_stack **stack);
+void			ft_done(t_stack **stack_a, t_stack **stack_b);
 int				sorted_b_stack(t_stack *stack, int count);
 int				sorted_a_stack(t_stack *stack, int count);
 int				is_already_sorted(t_stack *stack, int count, char c);
@@ -63,8 +63,8 @@ void			ft_change(int *str, int i, int j);
 void			ft_find_node(t_stack **temp, int count);
 
 void			ft_swap(t_stack **stack);
-void			swap_a(t_stack **stack_a);
-void			swap_b(t_stack **stack_b);
+void			swap_a(t_stack **stack_a, t_stack **stack_b);
+void			swap_b(t_stack **stack_a, t_stack **stack_b);
 void			swap_both(t_stack **stack_a, t_stack **stack_b);
 
 void			ft_push(t_stack **stack_from, t_stack **stack_to);
@@ -111,6 +111,10 @@ void			two_three_one_nor(t_stack **stack_a, t_stack **stack_b);
 void			one_three_two_nor(t_stack **stack_a, t_stack **stack_b);
 void			three_two_one_nor(t_stack **stack_a, t_stack **stack_b);
 void			three_one_two_nor(t_stack **stack_a, t_stack **stack_b);
+
+int		find_median(int *str, int count);
+void	sort_around_five(t_stack **stack_a, t_stack **stack_b, int count);
+void	sort_four_or_five(t_stack **stack_a, t_stack **stack_b, int count);
 
 int				ft_strnstr(char *str, char *arr, int n);
 

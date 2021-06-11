@@ -42,7 +42,7 @@ void	two_arg(t_stack **stack_a, t_stack **stack_b)
 	first = *stack_a;
 	second = (*stack_a)->next;
 	if (first->number > second->number)
-		swap_a(stack_a);
+		swap_a(stack_a, stack_b);
 }
 
 void	three_arg_nor(t_stack **stack_a, t_stack **stack_b)

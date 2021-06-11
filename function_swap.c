@@ -27,24 +27,51 @@ void	ft_swap(t_stack **stack)
 	}
 }
 
-void	swap_a(t_stack **stack_a)
+void	swap_a(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap(stack_a);
-	ft_putstr("sa");
+	if (((*stack_b) != NULL) && ((*stack_b)->next != NULL))
+	{
+		if (((*stack_b)->number) < (((*stack_b)->next)->number))
+		{
+			ft_swap(stack_b);
+			ft_putstr("ss");
+			return ;
+		}
+		else
+		{
+			ft_putstr("sa");
+			return ;
+		}
+	}
+	else
+		ft_putstr("sa");
 }
 
-void	swap_b(t_stack **stack_b)
+void	swap_b(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap(stack_b);
-	ft_putstr("sb");
+	if (((*stack_a) != NULL) && ((*stack_a)->next != NULL))
+	{
+		if (((*stack_a)->number) > (((*stack_a)->next)->number))
+		{
+			ft_swap(stack_a);
+			ft_putstr("ss");
+			return ;
+		}
+		else
+		{
+			ft_putstr("sb");
+			return ;
+		}
+	}
+	else
+		ft_putstr("sb");
 }
 
 void	swap_both(t_stack **stack_a, t_stack **stack_b)
 {
-	if (*stack_a != NULL)
 		ft_swap(stack_a);
-	if (*stack_b != NULL)
 		ft_swap(stack_b);
-	if (*stack_a != NULL || *stack_b != NULL)
 		ft_putstr("ss");
 }
