@@ -35,7 +35,6 @@ typedef struct	s_gnl
 {
 	char	*buffer;
 	int		size;
-	char	*backup;
 }				t_gnl;
 
 int				arg_count(char **argv, int count);
@@ -129,7 +128,7 @@ void			swap_or_push(t_stack **stack_a,
 					t_stack **stack_b, char *buffer);
 void			is_sorted(t_stack **stack_a, t_stack **stack_b, int count);
 
-int				get_next_line(int fd, char **line, char **save);
+int				get_next_line(int fd, char **line);
 int				ft_save(char **line, char **save);
 void			ft_repeat(char **temp, char **save, char *buffer, ssize_t size);
 int				ft_return_zero(char **line, char **save,

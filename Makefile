@@ -4,8 +4,6 @@ BONUS_NAME = checker
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-# LIBFLAGS = -L ./include/libft -lft
-
 SRCS_PARSE = $(addprefix ./arg/, \
 			 arg_count.c \
 			 arg_error_check.c \
@@ -50,7 +48,7 @@ SRCS = ./push_swap.c \
    	   $(SRCS_SORT) \
 	   $(SRCS_UTILS) \
 
-BONUS_SRCS = ./bonus/bonus_checker.c \
+BONUS_SRCS = ./bonus/bonus_main.c \
 			 $(SRCS_PARSE) \
 			 $(SRCS_GNL) \
 			 $(SRCS_FUNCTION) \

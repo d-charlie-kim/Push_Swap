@@ -26,8 +26,6 @@ void	ft_lstclear(t_stack *stack)
 		free(first);
 		first = second;
 	}
-	if (stack != NULL)
-		free(stack);
 	stack = NULL;
 }
 

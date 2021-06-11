@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
 int		ft_return_one(char **line, char **save, char *buffer, ssize_t size)
 {
@@ -97,24 +98,26 @@ int		ft_save(char **line, char **save)
 	return (1);
 }
 
-int		get_next_line(int fd, char **line, char **save)
+int		get_next_line(int fd, char **line)
 {
-	char		buffer[256];
+	char		buffer[1024];
+	static char	*save = NULL;
 	ssize_t		size;
 	char		*temp;
 
-	if (ft_check(*save, ft_strlen(*save)))
-		return (ft_save(line, save));
+	if (ft_check(save, ft_strlen(save)))
+		return (ft_save(line, &save));
 	size = 0;
 	while (size >= 0)
 	{
-		size = read(fd, buffer, 256);
+		size = read(fd, buffer, 1024);
+		printf("%zd\n", size);
 		if (ft_check(buffer, size))
-			return (ft_return_one(line, save, buffer, size));
-		if (size == 256)
-			ft_repeat(&temp, save, buffer, size);
-		else if (size >= 0)
-			return (ft_return_zero(line, save, buffer, size));
+			return (ft_return_one(line, &save, buffer, size));
+		if (size > 0)
+			ft_repeat(&temp, &save, buffer, size);
+		else if (size == 0)
+			return (ft_return_zero(line, &save, buffer, size));
 	}
 	free(save);
 	return (-1);
