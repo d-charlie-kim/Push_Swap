@@ -29,19 +29,20 @@ SRCS_SORT = $(addprefix ./sort/, \
 			sort_utils.c \
 			)
 
-SRCS_CHECKER = $(addprefix ./bonus_checker/, \
-			  bonus_checker.c \
-			   )
+SRCS_CHECKER = $(addprefix ./bonus/, \
+			bonus_checker.c \
+			)
 
 SRCS_GNL = $(addprefix ./get_next_line/, \
-		   get_next_line.c \
-	   	   get_next_line_utils.c \
-		   )
+			get_next_line.c \
+			get_next_line_utils.c \
+			)
 
 SRCS_UTILS = $(addprefix ./utils/, \
 			utils.c \
 			utils_error_or_done.c \
 			utils_lst.c \
+			)
 
 SRCS = ./push_swap.c \
 	   $(SRCS_PARSE) \
@@ -49,7 +50,7 @@ SRCS = ./push_swap.c \
    	   $(SRCS_SORT) \
 	   $(SRCS_UTILS) \
 
-BONUS_SRCS = ./checker.c \
+BONUS_SRCS = ./bonus/bonus_checker.c \
 			 $(SRCS_PARSE) \
 			 $(SRCS_GNL) \
 			 $(SRCS_FUNCTION) \

@@ -6,13 +6,13 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 20:54:07 by dokkim            #+#    #+#             */
-/*   Updated: 2021/06/10 16:03:28 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/11 19:26:08 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_putstr(char *str)
+int		ft_putstr(char *str)
 {
 	int i;
 

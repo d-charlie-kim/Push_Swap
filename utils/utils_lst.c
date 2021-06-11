@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:06:29 by dokkim            #+#    #+#             */
-/*   Updated: 2021/06/10 15:53:43 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/11 19:18:35 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,20 @@
 
 void	ft_lstclear(t_stack *stack)
 {
-	t_stack *temp;
-	t_stack *temp2;
+	t_stack *first;
+	t_stack *second;
 
-	if (!stack)
+	first = stack;
+	if (first == NULL)
 		return ;
-	temp2 = stack;
-	while (temp != NULL)
+	while (first != NULL)
 	{
-		temp = (temp2)->next;
-		if (temp != NULL)
-		{
-			temp2 = temp->next;
-			free(temp);
-			temp = temp2;
-		}
+		second = first->next;
+		free(first);
+		first = second;
 	}
 	if (stack != NULL)
-	{
 		free(stack);
-	}
 	stack = NULL;
 }
 

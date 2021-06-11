@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 20:01:41 by dokkim            #+#    #+#             */
-/*   Updated: 2021/06/11 18:49:39 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/11 19:28:33 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct	s_stack
 {
@@ -25,18 +24,18 @@ typedef struct	s_stack
 
 typedef struct	s_chunks
 {
-	int				first_chunk;
-	int				second_chunk;
-	int				last_chunk;
-	int				first;
-	int				second;
+	int	first_chunk;
+	int	second_chunk;
+	int	last_chunk;
+	int	first;
+	int	second;
 }				t_chunks;
 
 typedef struct	s_gnl
 {
-	char			*buffer;
-	int				size;
-	char			*backup;
+	char	*buffer;
+	int		size;
+	char	*backup;
 }				t_gnl;
 
 int				arg_count(char **argv, int count);
@@ -88,12 +87,12 @@ void			rotate_both(t_stack **stack_a, t_stack **stack_b);
 
 void			chunk_a_to_b(t_stack **stack_a, t_stack **stack_b, int count);
 void			chunk_b_to_a(t_stack **stack_a, t_stack **stack_b, int count);
-t_chunks	cycle_a_to_b(t_stack **stack_a, t_stack **stack_b,
+t_chunks		cycle_a_to_b(t_stack **stack_a, t_stack **stack_b,
 										int count, t_chunks chunks);
-t_chunks	cycle_b_to_a(t_stack **stack_a, t_stack **stack_b,
+t_chunks		cycle_b_to_a(t_stack **stack_a, t_stack **stack_b,
 										int count, t_chunks chunks);
 
-void	reverse_together(t_stack **stack_a, t_stack **stack_b,
+void			reverse_together(t_stack **stack_a, t_stack **stack_b,
 												int num1, int num2);
 
 int				ft_find_pivot(t_stack **stack_a, t_stack **stack_b,
