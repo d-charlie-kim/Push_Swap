@@ -12,7 +12,7 @@ SRCS_PARSE = $(addprefix ./arg/, \
 			 arg_parse.c \
 			 )
 
-SRCS_OPERATION = $(addprefix ./function/, \
+SRCS_FUNCTION = $(addprefix ./function/, \
 				 function_push.c \
 				 function_reverse_rotate.c \
 				 function_rotate.c \
@@ -40,14 +40,14 @@ SRCS_GNL = $(addprefix ./include/get_next_line/, \
 
 SRCS = ./push_swap.c \
 	   $(SRCS_PARSE) \
-	   $(SRCS_OPERATION) \
+	   $(SRCS_FUNCTION) \
    	   $(SRCS_SORT) \
    	   $(SRCS_CHECKER) \
 
 BONUS_SRCS = ./checker.c \
 			 $(SRCS_PARSE) \
 			 $(SRCS_GNL) \
-			 $(SRCS_OPERATION) \
+			 $(SRCS_FUNCTION) \
 			 $(SRCS_CHECKER) \
 
 OBJS = $(SRCS:.c=.o)

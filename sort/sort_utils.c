@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	reverse_together(t_stack **stack_a, t_stack **stack_b,
 												int num1, int num2)

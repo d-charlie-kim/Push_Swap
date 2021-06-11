@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_chunks	cycle_a_to_b(t_stack **stack_a, t_stack **stack_b,
 										int count, t_chunks chunks)
