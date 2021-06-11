@@ -29,8 +29,8 @@ SRCS_SORT = $(addprefix ./sort/, \
 			sort_utils.c \
 			)
 
-SRCS_CHECKER = $(addprefix ./checker/, \
-			   checker.c \
+SRCS_CHECKER = $(addprefix ./bonus_checker/, \
+			  bonus_checker.c \
 			   )
 
 SRCS_GNL = $(addprefix ./include/get_next_line/, \

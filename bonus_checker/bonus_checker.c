@@ -102,7 +102,7 @@ int		main(int argc, char **argv)
 	gnl.buffer = NULL;
 	stack_a = NULL;
 	stack_b = NULL;
-	count = parsing(&stack_a, &stack_b, argc, argv);
+	count = parsing(&stack_a, argc, argv);
 	gnl.size = get_next_line(0, &(gnl.buffer), &(gnl.backup));
 	while (gnl.size == 1)
 	{

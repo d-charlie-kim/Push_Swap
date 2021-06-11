@@ -27,16 +27,12 @@ void	ft_push(t_stack **stack_from, t_stack **stack_to)
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*temp;
-
 	ft_push(stack_b, stack_a);
 	ft_putstr("pa");
 }
 
 void	push_b(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*temp;
-
 	ft_push(stack_a, stack_b);
 	ft_putstr("pb");
 }

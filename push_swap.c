@@ -21,7 +21,7 @@ int		main(int argc, char **argv)
 	count = 0;
 	stack_a = NULL;
 	stack_b = NULL;
-	count = parsing(&stack_a, &stack_b, argc, argv);
+	count = parsing(&stack_a, argc, argv);
 	if (is_already_sorted(stack_a, count, 'a'))
 		ft_done(&stack_a, &stack_b);
 	if (count == 4 || count == 5)

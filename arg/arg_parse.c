@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int		parsing(t_stack **stack_a, t_stack **stack_b, int argc, char **argv)
+int		parsing(t_stack **stack_a, int argc, char **argv)
 {
 	int	count;
 

@@ -84,9 +84,9 @@ void	three_arg(t_stack **stack_a, t_stack **stack_b)
 	else if (second < first && first < third)
 		two_one_three(stack_a, stack_b);
 	else if (second < third && third < first)
-		three_one_two(stack_a, stack_b);
+		three_one_two(stack_a);
 	else if (third < second && second < first)
 		three_two_one(stack_a, stack_b);
 	else if (third < first && first < second)
-		two_three_one(stack_a, stack_b);
+		two_three_one(stack_a);
 }

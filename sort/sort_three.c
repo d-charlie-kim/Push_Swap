@@ -17,7 +17,7 @@ void	two_one_three(t_stack **stack_a, t_stack **stack_b)
 	swap_a(stack_a, stack_b);
 }
 
-void	two_three_one(t_stack **stack_a, t_stack **stack_b)
+void	two_three_one(t_stack **stack_a)
 {
 	reverse_rotate_a(stack_a);
 }
@@ -34,7 +34,7 @@ void	three_two_one(t_stack **stack_a, t_stack **stack_b)
 	reverse_rotate_a(stack_a);
 }
 
-void	three_one_two(t_stack **stack_a, t_stack **stack_b)
+void	three_one_two(t_stack **stack_a)
 {
 	rotate_a(stack_a);
 }
