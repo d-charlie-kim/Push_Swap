@@ -6,29 +6,31 @@ CFLAGS = -Wall -Wextra -Werror
 
 # LIBFLAGS = -L ./include/libft -lft
 
-SRCS_PARSE = $(addprefix ./parsing/, \
-			 parsing.c \
-			 validate.c \
-			 linked_list.c \
+SRCS_PARSE = $(addprefix ./arg/, \
+			 arg_count.c \
+			 arg_error_check.c \
+			 arg_parse.c \
 			 )
 
-SRCS_OPERATION = $(addprefix ./operation/, \
-				 swap.c \
-				 push.c \
-				 rotate.c \
-				 reverse_rotate.c \
+SRCS_OPERATION = $(addprefix ./function/, \
+				 function_push.c \
+				 function_reverse_rotate.c \
+				 function_rotate.c \
+				 function_swap.c \
 			 	 )
 
 SRCS_SORT = $(addprefix ./sort/, \
-			sort.c \
-			sort_2_to_3.c \
-			sort_4_to_5.c \
-			recursive.c \
-			recursive_util.c \
+			sort_chunks.c \
+			sort_four_five.c \
+			sort_pivot.c \
+			sort_three_nor.c \
+			sort_three.c \
+			sort_two_or_three.c \
+			sort_utils.c \
 			)
 
-SRCS_CHECKER = $(addprefix ./check/, \
-			   check.c \
+SRCS_CHECKER = $(addprefix ./checker/, \
+			   checker.c \
 			   )
 
 SRCS_GNL = $(addprefix ./include/get_next_line/, \
@@ -36,13 +38,13 @@ SRCS_GNL = $(addprefix ./include/get_next_line/, \
 	   	   get_next_line_utils.c \
 		   )
 
-SRCS = ./parsing/push_swap.c \
+SRCS = ./push_swap.c \
 	   $(SRCS_PARSE) \
 	   $(SRCS_OPERATION) \
    	   $(SRCS_SORT) \
    	   $(SRCS_CHECKER) \
 
-BONUS_SRCS = ./check/checker_main.c \
+BONUS_SRCS = ./checker.c \
 			 $(SRCS_PARSE) \
 			 $(SRCS_GNL) \
 			 $(SRCS_OPERATION) \
@@ -54,11 +56,11 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 $(NAME) : $(OBJS)
 	# make -C ./include/libft
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(BONUS_NAME) : $(BONUS_OBJS)
 	# make -C ./include/libft
-	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFLAGS) -o $(BONUS_NAME)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
 
 all : $(NAME)
 
