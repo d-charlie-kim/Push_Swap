@@ -6,12 +6,11 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 22:18:14 by dokkim            #+#    #+#             */
-/*   Updated: 2021/06/11 18:12:44 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/12 16:40:47 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
 
 int		ft_return_one(char **line, char **save, char *buffer, ssize_t size)
 {
@@ -111,7 +110,6 @@ int		get_next_line(int fd, char **line)
 	while (size >= 0)
 	{
 		size = read(fd, buffer, 1024);
-		printf("%zd\n", size);
 		if (ft_check(buffer, size))
 			return (ft_return_one(line, &save, buffer, size));
 		if (size > 0)
