@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:35:40 by dokkim            #+#    #+#             */
-/*   Updated: 2021/06/10 15:35:41 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/06/13 19:40:21 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	two_or_three(t_stack **stack_a, t_stack **stack_b, int count)
 {
-	int		i;
 	int		num;
 	t_stack	*temp;
 
-	i = 0;
 	num = 3;
 	temp = *stack_a;
 	while (num > 0 && temp != NULL)
