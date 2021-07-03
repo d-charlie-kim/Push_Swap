@@ -18,14 +18,14 @@ void	is_sorted(t_stack **stack_a, t_stack **stack_b, int count)
 	{
 		ft_lstclear(*stack_a);
 		ft_lstclear(*stack_b);
-		ft_putstr("OK");
+		ft_putstr("OK", 1);
 		exit(0);
 	}
 	else
 	{
 		ft_lstclear(*stack_a);
 		ft_lstclear(*stack_b);
-		ft_putstr("KO");
+		ft_putstr("KO", 1);
 		exit(0);
 	}
 }

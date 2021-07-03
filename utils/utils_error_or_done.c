@@ -53,6 +53,11 @@ int		sorted_b_stack(t_stack *stack, int count)
 
 int		is_already_sorted(t_stack *stack, int count, char c)
 {
+	t_stack	*first;
+	t_stack	*second;
+
+	first = stack;
+	second = stack->next;
 	if (c == 'a')
 		count = sorted_a_stack(stack, count);
 	else if (c == 'b')
@@ -66,6 +71,6 @@ void	ft_error(char *str, t_stack *stack_a, t_stack *stack_b)
 {
 	ft_lstclear(stack_a);
 	ft_lstclear(stack_b);
-	ft_putstr(str);
+	ft_putstr(str, 2);
 	exit(-1);
 }

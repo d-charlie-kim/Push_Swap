@@ -28,11 +28,11 @@ void	ft_push(t_stack **stack_from, t_stack **stack_to)
 void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_push(stack_b, stack_a);
-	ft_putstr("pa");
+	ft_putstr("pa", 1);
 }
 
 void	push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_push(stack_a, stack_b);
-	ft_putstr("pb");
+	ft_putstr("pb",1 );
 }

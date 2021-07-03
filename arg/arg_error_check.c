@@ -23,10 +23,7 @@ void	arg_check(int argc, char **argv)
 		len_check(argv, count);
 	}
 	else
-	{
-		ft_putstr("Error");
 		exit(0);
-	}
 }
 
 void	duplicate_check(t_stack *stack)

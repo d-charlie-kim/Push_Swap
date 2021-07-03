@@ -35,17 +35,17 @@ void	swap_a(t_stack **stack_a, t_stack **stack_b)
 		if (((*stack_b)->number) < (((*stack_b)->next)->number))
 		{
 			ft_swap(stack_b);
-			ft_putstr("ss");
+			ft_putstr("ss", 1);
 			return ;
 		}
 		else
 		{
-			ft_putstr("sa");
+			ft_putstr("sa", 1);
 			return ;
 		}
 	}
 	else
-		ft_putstr("sa");
+		ft_putstr("sa", 1);
 }
 
 void	swap_b(t_stack **stack_a, t_stack **stack_b)
@@ -56,22 +56,22 @@ void	swap_b(t_stack **stack_a, t_stack **stack_b)
 		if (((*stack_a)->number) > (((*stack_a)->next)->number))
 		{
 			ft_swap(stack_a);
-			ft_putstr("ss");
+			ft_putstr("ss", 1);
 			return ;
 		}
 		else
 		{
-			ft_putstr("sb");
+			ft_putstr("sb", 1);
 			return ;
 		}
 	}
 	else
-		ft_putstr("sb");
+		ft_putstr("sb", 1);
 }
 
 void	swap_both(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);
-	ft_putstr("ss");
+	ft_putstr("ss", 1);
 }

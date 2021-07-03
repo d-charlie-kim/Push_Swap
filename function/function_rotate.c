@@ -34,18 +34,18 @@ void	ft_rotate(t_stack **stack)
 void	rotate_a(t_stack **stack_a)
 {
 	ft_rotate(stack_a);
-	ft_putstr("ra");
+	ft_putstr("ra", 1);
 }
 
 void	rotate_b(t_stack **stack_b)
 {
 	ft_rotate(stack_b);
-	ft_putstr("rb");
+	ft_putstr("rb", 1);
 }
 
 void	rotate_both(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_rotate(stack_a);
 	ft_rotate(stack_b);
-	ft_putstr("rr");
+	ft_putstr("rr", 1);
 }

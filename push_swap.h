@@ -59,7 +59,7 @@ int				sorted_a_stack(t_stack *stack, int count);
 int				is_already_sorted(t_stack *stack, int count, char c);
 void			ft_error(char *str, t_stack *stack_a, t_stack *stack_b);
 
-int				ft_putstr(char *str);
+int				ft_putstr(char *str, int fd);
 int				ft_isdigit(char c);
 int				ft_isminus(char c);
 void			ft_change(int *str, int i, int j);
