@@ -66,6 +66,8 @@ void	valid_check(char **argv)
 				ft_error("Error", NULL, NULL);
 			while (argv[i][j] >= 48 && argv[i][j] <= 57 && argv[i][j])
 				j++;
+			if (argv[i][j] != ' ' && argv[i][j] != '\0')
+				ft_error("Error", NULL, NULL);
 		}
 		i++;
 	}
